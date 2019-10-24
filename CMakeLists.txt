@@ -4,4 +4,4 @@ project(graphs-asdasd)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS -pthread)
 
-add_executable(graphs-asdasd json.hpp parser.h main.cpp)
+add_executable(graphs-asdasd json.hpp graph.h parser.h main.cpp)
