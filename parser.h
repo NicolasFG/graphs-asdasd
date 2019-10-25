@@ -16,9 +16,12 @@ bool isNumber(string s)
     if (simbolo=='-'){
         return true;
     }
-    for (int i = 0; i < s.length(); ++i){
-        return isdigit(s[i]) != 0;
+    else{
+        for (char i : s){
+            return isdigit(i) != 0;
+        }
     }
+    return false;
 }
 
 auto parse(int i,const nlohmann::json& jvalues){
