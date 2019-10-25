@@ -13,11 +13,9 @@ using namespace std;
 bool isNumber(string s)
 {
     char simbolo=s.at(0);
-
     if (simbolo=='-'){
         return true;
     }
-
     for (int i = 0; i < s.length(); ++i){
         return isdigit(s[i]) != 0;
     }
