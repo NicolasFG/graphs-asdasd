@@ -8,16 +8,16 @@
 using namespace std;
 
 int main(){
-    //string filename="/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/json.hpp";
+    //string filename="/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/airports.json";
 
-    ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/json.hpp");
+    ifstream filename("/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/airports.json");
     nlohmann::json j = nlohmann::json::parse(filename);
     cout << j <<endl;
 
-    // file_input(filename);
+    //ifstream file_input(filename);
     //nlohmann::json airports;
     //file_input >> airports;
-    //cout<<airports<<endl;
+    //cout<<airports[1]<<endl;
 }
 
 #endif //GRAPHS_ASDASD_PARSER_H
