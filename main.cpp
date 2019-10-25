@@ -3,5 +3,7 @@
 using namespace std;
 
 int main(){
-    parse();
+    for (int i = 0; i < sizearray(); ++i) {
+        cout<<parse(i)<<endl;
+    }
 }
