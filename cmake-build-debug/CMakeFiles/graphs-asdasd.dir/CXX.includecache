@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.cpp
+string
+-
+graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
+
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
+vector
+-
+
 /Users/jonathanprieto/Documents/GitHub/graphs-asdasd/json.hpp
 algorithm
 -

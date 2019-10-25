@@ -3,16 +3,17 @@
 //
 
 #include <string>
+#include <iostream>
 #include "graph.h"
 
-template<typename T>
-graph<T>::graph() {
+
+graph::graph() {
     nodes = 0;
 }
 
 
-template <typename T>
-void graph<T>::createNodes(int _id, string _name, double _la, double _lo) {
+
+void graph::createNodes(int _id, string _name, double _la, double _lo) {
     auto auxNode = new Node;
     auxNode->Id = _id;
     auxNode->Name = _name;
@@ -21,8 +22,9 @@ void graph<T>::createNodes(int _id, string _name, double _la, double _lo) {
     LA[nodes][0] = auxNode;
     nodes++;
 }
-template <typename T>
-void graph<T>::createNodes(int _id, string _name, double _la, double _lo, double _pond) {
+
+
+void graph::createNodes(int _id, string _name, double _la, double _lo, double _pond) {
     auto auxNode = new Node;
     auxNode->Id = _id;
     auxNode->Name = _name;
@@ -35,8 +37,14 @@ void graph<T>::createNodes(int _id, string _name, double _la, double _lo, double
 
 
 
+void graph::createConection(string* origin, string* end,double pond) {
+    auto auxEdge = new Edge;
+}
 
-template<typename T>
-void graph<T>::createConection(string* origin, string* end,double pond) {
-    auto auxEdge = new Edge<T>;
+
+void graph::printNodes() {
+
+    for (int i = 0; i < LA.size() ; i++){
+        cout << LA[i][0]->Name << " ";
+    }
 }
