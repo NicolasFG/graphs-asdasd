@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.cpp" "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/cmake-build-debug/CMakeFiles/graphs-asdasd.dir/graph.cpp.o"
-  "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp" "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/cmake-build-debug/CMakeFiles/graphs-asdasd.dir/main.cpp.o"
+  "/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.cpp" "/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/cmake-build-debug/CMakeFiles/graphs-asdasd.dir/graph.cpp.o"
+  "/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/main.cpp" "/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/cmake-build-debug/CMakeFiles/graphs-asdasd.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

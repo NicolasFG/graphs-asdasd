@@ -4,5 +4,7 @@
 CMakeFiles/graphs-asdasd.dir/graph.cpp.o: ../graph.cpp
 CMakeFiles/graphs-asdasd.dir/graph.cpp.o: ../graph.h
 
+CMakeFiles/graphs-asdasd.dir/main.cpp.o: ../json.hpp
 CMakeFiles/graphs-asdasd.dir/main.cpp.o: ../main.cpp
+CMakeFiles/graphs-asdasd.dir/main.cpp.o: ../parser.h
 
