@@ -9,26 +9,40 @@
 
 using namespace std;
 
-template <typename T>
+
 struct Node;
 
 template  <typename T>
 struct Edge{
     double pond;
-    Node<T>* origin;
-    Node<T>* end;
+    Node* origin;
+    Node* end;
 };
 
-template  <typename T>
+
 struct Node{
-    T value;
-    vector<Edge<T>*> nexts;
+    int Id;
+    string Name;
+    double Lat,Long;
+    vector<int> nexts;
+
+    double pond;
 };
 
-
+template <typename T>
 class graph {
+private:
+    unsigned int nodes;
+    vector<vector<Node*>> LA;
+public:
+    graph();
 
+    void createNodes(int _id, string _name, double _la, double _lo);
+    void createNodes(int _id, string _name, double _la, double _lo, double _pond);
+    void createConection(string* origin, string* end);
+    void createConection(string* origin, string* end, double pond);
 };
+
 
 
 #endif //GRAPHS_ASDASD_GRAPH_H

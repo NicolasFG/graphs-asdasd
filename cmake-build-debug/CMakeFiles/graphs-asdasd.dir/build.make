@@ -57,22 +57,9 @@ include CMakeFiles/graphs-asdasd.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/graphs-asdasd.dir/flags.make
 
-CMakeFiles/graphs-asdasd.dir/main.cpp.o: CMakeFiles/graphs-asdasd.dir/flags.make
-CMakeFiles/graphs-asdasd.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/graphs-asdasd.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphs-asdasd.dir/main.cpp.o -c "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp"
-
-CMakeFiles/graphs-asdasd.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graphs-asdasd.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp" > CMakeFiles/graphs-asdasd.dir/main.cpp.i
-
-CMakeFiles/graphs-asdasd.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graphs-asdasd.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp" -o CMakeFiles/graphs-asdasd.dir/main.cpp.s
-
 CMakeFiles/graphs-asdasd.dir/graph.cpp.o: CMakeFiles/graphs-asdasd.dir/flags.make
 CMakeFiles/graphs-asdasd.dir/graph.cpp.o: ../graph.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/graphs-asdasd.dir/graph.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/graphs-asdasd.dir/graph.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphs-asdasd.dir/graph.cpp.o -c "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.cpp"
 
 CMakeFiles/graphs-asdasd.dir/graph.cpp.i: cmake_force
@@ -83,16 +70,29 @@ CMakeFiles/graphs-asdasd.dir/graph.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graphs-asdasd.dir/graph.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.cpp" -o CMakeFiles/graphs-asdasd.dir/graph.cpp.s
 
+CMakeFiles/graphs-asdasd.dir/main.cpp.o: CMakeFiles/graphs-asdasd.dir/flags.make
+CMakeFiles/graphs-asdasd.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/graphs-asdasd.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphs-asdasd.dir/main.cpp.o -c "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp"
+
+CMakeFiles/graphs-asdasd.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graphs-asdasd.dir/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp" > CMakeFiles/graphs-asdasd.dir/main.cpp.i
+
+CMakeFiles/graphs-asdasd.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graphs-asdasd.dir/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp" -o CMakeFiles/graphs-asdasd.dir/main.cpp.s
+
 # Object files for target graphs-asdasd
 graphs__asdasd_OBJECTS = \
-"CMakeFiles/graphs-asdasd.dir/main.cpp.o" \
-"CMakeFiles/graphs-asdasd.dir/graph.cpp.o"
+"CMakeFiles/graphs-asdasd.dir/graph.cpp.o" \
+"CMakeFiles/graphs-asdasd.dir/main.cpp.o"
 
 # External object files for target graphs-asdasd
 graphs__asdasd_EXTERNAL_OBJECTS =
 
-graphs-asdasd: CMakeFiles/graphs-asdasd.dir/main.cpp.o
 graphs-asdasd: CMakeFiles/graphs-asdasd.dir/graph.cpp.o
+graphs-asdasd: CMakeFiles/graphs-asdasd.dir/main.cpp.o
 graphs-asdasd: CMakeFiles/graphs-asdasd.dir/build.make
 graphs-asdasd: CMakeFiles/graphs-asdasd.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable graphs-asdasd"
