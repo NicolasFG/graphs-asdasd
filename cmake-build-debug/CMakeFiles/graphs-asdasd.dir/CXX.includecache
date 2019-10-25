@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.cpp
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.cpp
 string
 -
 graph.h
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
 vector
 -
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/json.hpp
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/json.hpp
 algorithm
 -
 cassert
@@ -350,17 +350,17 @@ limits
 type_traits
 -
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/main.cpp
 iostream
 -
 parser.h
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/parser.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/parser.h
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/parser.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/parser.h
 iostream
 -
 json.hpp
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/json.hpp
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/json.hpp
 fstream
 -
 

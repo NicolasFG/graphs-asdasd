@@ -10,8 +10,8 @@ using namespace std;
 void parse (){
     //string filename="/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/airports.json";
 
-    ifstream filename("/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/airports.json");
-    //ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/airports.json");
+    //ifstream filename("/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/airports.json");
+    ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/airports.json");
     nlohmann::json j = nlohmann::json::parse(filename);
     cout << j <<endl;
 
