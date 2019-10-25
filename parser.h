@@ -9,15 +9,18 @@ using namespace std;
 ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/airports.json");
 //ifstream filename("/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/airports.json");
 
-string parse(int i){
-    nlohmann::json jvalues = nlohmann::json::parse(filename);
+auto parse(int i,const nlohmann::json& jvalues){
     return jvalues[i];
 }
 
-int sizearray(){
-    int sizearray;
+int sizearray(nlohmann::json jvalues){
+    int size=jvalues.size();
+    return size;
+}
+
+void print(){
     nlohmann::json jvalues = nlohmann::json::parse(filename);
-    return sizearray=jvalues.size();
+    cout<<jvalues.size()<<endl;
 }
 
 #endif //GRAPHS_ASDASD_PARSER_H
