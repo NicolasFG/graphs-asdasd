@@ -12,7 +12,7 @@ using namespace std;
 
 struct Node;
 
-
+template  <typename T>
 struct Edge{
     double pond;
     Node* origin;
@@ -29,9 +29,9 @@ struct Node{
     double pond;
 };
 
+template <typename T>
 class graph {
 private:
-
     unsigned int nodes;
     vector<vector<Node*>> LA;
 public:
@@ -41,8 +41,6 @@ public:
     void createNodes(int _id, string _name, double _la, double _lo, double _pond);
     void createConection(string* origin, string* end);
     void createConection(string* origin, string* end, double pond);
-
-    void printNodes();
 };
 
 
