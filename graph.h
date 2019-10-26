@@ -12,11 +12,10 @@ using namespace std;
 
 struct Node;
 
-template  <typename T>
 struct Edge{
-    double pond;
-    Node* origin;
-    Node* end;
+    double pond = 0;
+    Node* origin = nullptr;
+    Node* end = nullptr;
 };
 
 
@@ -26,21 +25,24 @@ struct Node{
     double Lat,Long;
     vector<int> nexts;
 
-    double pond;
+    double pond = 0;
 };
 
-template <typename T>
 class graph {
 private:
     unsigned int nodes;
+    bool is_directed;
     vector<vector<Node*>> LA;
 public:
-    graph();
+    explicit graph(bool directed);
 
-    void createNodes(int _id, string _name, double _la, double _lo);
-    void createNodes(int _id, string _name, double _la, double _lo, double _pond);
-    void createConection(string* origin, string* end);
-    void createConection(string* origin, string* end, double pond);
+    void createNodes(int _id, const string& _name, double _la, double _lo);
+    void createNodes(int _id, const string& _name, double _la, double _lo, double _pond);
+    void createConection(int origin, int end);
+    void createConection(int origin, int end, double pond);
+
+    void printNode(int key);
+    Node* findNode(int key);
 };
 
 
