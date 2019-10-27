@@ -98,7 +98,7 @@ void createjsonnodes(){
     for (int i = 0; i < sizearray(jvalues); ++i) {
         graph G = graph(true);
         G.createNodes(getairportid(parse(i,jvalues)),getairportname(parse(i,jvalues)), getairportlatitude(parse(i,jvalues)), getairportlongitude(parse(i,jvalues)));
-        G.printNode(i);
+        G.printNode(getairportid(parse(i,jvalues)));
     }
 }
 

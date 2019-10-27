@@ -7,7 +7,6 @@ graph::graph(bool directed) {
     is_directed = directed;
 }
 
-
 void graph::createNodes(int _id, const string& _name, double _la, double _lo) {
     Node* auxNode = new Node;
     auxNode->Id = _id;
@@ -40,8 +39,6 @@ void graph::createNodes(int _id, const string& _name, double _la, double _lo, do
     nodes++;
 }
 
-
-
 void graph::createConection(int origin, int end) {
     auto auxEdge = new Edge;
     auxEdge->origin = findNode(origin);
@@ -54,18 +51,14 @@ void graph::createConection(int origin, int end) {
 }
 
 void graph::printNode(int key) {
-    auto x = findNode(key);
+    Node* x = findNode(key);
     cout<<x->Name<<endl;
 }
 
 Node* graph::findNode(int key) {
-    for (auto i : LA) {
-        cout<<i[0]->Id<<endl;
-        cout<<typeid(i[0]).name()<<endl;
+    for (auto & i : LA) {
         if (i[0]->Id == key){
-            cout<<i[0]->Name<<endl;
             return i[0];
-
         }
     }
     return nullptr;

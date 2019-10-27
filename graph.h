@@ -29,6 +29,7 @@ private:
     unsigned int nodes;
     bool is_directed;
     vector<vector<Node*>> LA;
+
 public:
     explicit graph(bool isdirected);
 
