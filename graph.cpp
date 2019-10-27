@@ -49,7 +49,7 @@ void graph::createConection(int origin, int end,double pond) {
 
 void graph::printNode(int key) {
     auto x = LA[0][0];
-    cout << x->Name;
+    cout<<x->Name<<endl;
 }
 
 Node* graph::findNode(int key) {

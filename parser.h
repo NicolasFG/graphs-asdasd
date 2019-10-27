@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include "graph.h"
 #include "json.hpp"
 #include <fstream>
 #include <cstdio>
@@ -89,6 +90,16 @@ void fillin(){
         cout<<getairportlongitude(parse(i,jvalues))<<endl;
         //Aqui se esta botando un vector donde estan todos los destinos asi que ya estan todo y como enteros, con un .size sacas puedes hacer un for y sacar todos
         cout<<getairportdestinations(parse(i,jvalues))[0]<<endl;
+    }
+}
+
+void createjsonnodes(){
+    ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/airports.json");
+    nlohmann::json jvalues = nlohmann::json::parse(filename);
+    for (int i = 0; i < sizearray(jvalues); ++i) {
+        graph G = graph(true);
+        G.createNodes(getairportid(parse(i,jvalues)),getairportname(parse(i,jvalues)), getairportlatitude(parse(i,jvalues)), getairportlongitude(parse(i,jvalues)));
+        G.printNode(i);
     }
 }
 
