@@ -1,7 +1,3 @@
-//
-// Created by alonso on 23/10/19.
-//
-
 #ifndef GRAPHS_ASDASD_GRAPH_H
 #define GRAPHS_ASDASD_GRAPH_H
 
