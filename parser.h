@@ -11,14 +11,14 @@
 #include <string>
 using namespace std;
 
-bool isNumber(string s)
+bool isNumber(string coordinates)
 {
-    char simbolo=s.at(0);
+    char simbolo=coordinates.at(0);
     if (simbolo=='-'){
         return true;
     }
     else{
-        for (char i : s){
+        for (char i : coordinates){
             return isdigit(i) != 0;
         }
     }
