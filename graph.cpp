@@ -25,9 +25,9 @@ double deg2rad(double deg) {
 }
 
 double graph::calculatedistance(int key1, int key2) {
+    int R = 6371;
     auto x = findNode(key1);
     auto y = findNode(key2);
-    int R = 6371;
     double diflat = deg2rad(x->Lat-y->Lat);
     double diflong = deg2rad(x->Long-y->Long);
     double z =
@@ -70,6 +70,7 @@ void graph::printNode(int key) {
 
 Node* graph::findNode(int key) {
     for (auto & i : LA) {
+        cout<<i[0]->Id<<endl;
         if (i[0]->Id == key){
             return i[0];
         }
