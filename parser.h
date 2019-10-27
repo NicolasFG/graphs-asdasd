@@ -87,7 +87,6 @@ void fillin(){
         cout<<getairportid(parse(i,jvalues))<<endl;
         cout<<getairportlatitude(parse(i,jvalues))<<endl;
         cout<<getairportlongitude(parse(i,jvalues))<<endl;
-        //Aqui se esta botando un vector donde estan todos los destinos asi que ya estan todo y como enteros, con un .size sacas puedes hacer un for y sacar todos
         cout<<getairportdestinations(parse(i,jvalues))[0]<<endl;
     }
 }
