@@ -1,6 +1,6 @@
 #include <string>
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include "graph.h"
 
 graph::graph(bool directed) {
