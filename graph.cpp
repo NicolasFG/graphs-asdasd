@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <math.h>
 #include "graph.h"
 
 graph::graph(bool directed) {
@@ -19,11 +20,23 @@ void graph::createNodes(int _id, const string& _name, double _la, double _lo) {
     nodes++;
 }
 
-void graph::calculatedistance(int key1, int key2) {
+double deg2rad(double deg) {
+    return deg * (M_PI/180);
+}
+
+double graph::calculatedistance(int key1, int key2) {
     auto x = findNode(key1);
     auto y = findNode(key2);
-    cout<<x->Name<<endl;
-    cout<<y->Name<<endl;
+    int R = 6371;
+    double diflat = deg2rad(x->Lat-y->Lat);
+    double diflong = deg2rad(x->Long-y->Long);
+    double z =
+            sin(diflat/2)*sin(diflat/2)+
+            cos(deg2rad(y->Lat))*cos(deg2rad(x->Lat))*
+            sin(diflong/2)*sin(diflong/2);
+    double c= 2*atan2(sqrt(z),sqrt(1-z));
+    double d= R*c;
+    return d;
 }
 
 void graph::createNodes(int _id, const string& _name, double _la, double _lo, double _pond) {

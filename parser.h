@@ -98,6 +98,7 @@ void createjsonnodes(){
         graph G = graph(true);
         G.createNodes(getairportid(parse(i,jvalues)),getairportname(parse(i,jvalues)), getairportlatitude(parse(i,jvalues)), getairportlongitude(parse(i,jvalues)));
         G.printNode(getairportid(parse(i,jvalues)));
+        cout<<G.calculatedistance(getairportid(parse(i,jvalues)),7252)<<endl;
     }
 }
 

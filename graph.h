@@ -39,7 +39,7 @@ public:
     void createConection(int origin, int end, double pond);
 
     void printNode(int key);
-    void calculatedistance(int key1, int key2);
+    double calculatedistance(int key1, int key2);
     Node* findNode(int key);
 };
 
