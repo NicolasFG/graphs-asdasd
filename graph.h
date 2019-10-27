@@ -8,7 +8,7 @@ using namespace std;
 
 struct Node;
 
-template  <typename T>
+
 struct Edge{
     double pond;
     Node* origin;
@@ -25,18 +25,23 @@ struct Node{
     double pond;
 };
 
-template <typename T>
+
 class graph {
 private:
+    bool is_directed;
+
     unsigned int nodes;
     vector<vector<Node*>> LA;
 public:
-    graph();
+    graph(bool isdirected);
 
-    void createNodes(int _id, string _name, double _la, double _lo);
-    void createNodes(int _id, string _name, double _la, double _lo, double _pond);
-    void createConection(string* origin, string* end);
-    void createConection(string* origin, string* end, double pond);
+    void createNodes(int _id, const string& _name, double _la, double _lo);
+    void createNodes(int _id, const string&  _name, double _la, double _lo, double _pond);
+    void createConection(int origin, int end);
+    void createConection(int origin, int end, double pond);
+
+    Node* findNode(int key);
+    void printNode(int key);
 };
 
 

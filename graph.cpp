@@ -32,23 +32,28 @@ void graph::createNodes(int _id, const string& _name, double _la, double _lo, do
     auxNode->Lat = _la;
     auxNode->Long = _lo;
     auxNode->pond = _pond;
-    cout << "sad";
-    LA[nodes].push_back(auxNode);
-    cout << "1";
+    vector<Node*> aux;
+    aux.push_back(auxNode);
+    LA.push_back(aux);
     nodes++;
 }
 
+//
 
-
-void graph::createConection(int origin, int end,double pond) {
+void graph::createConection(int origin, int end) {
     auto auxEdge = new Edge;
     auxEdge->origin = findNode(origin);
     auxEdge->end = findNode(end);
+    for (auto i : LA){
+        if (i[0] == auxEdge->origin){
+            i.push_back(auxEdge->end);
+        }
+    }
 
 }
 
 void graph::printNode(int key) {
-    auto x = LA[0][0];
+    auto x = findNode(key);
     cout << x->Name;
 }
 
