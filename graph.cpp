@@ -4,7 +4,6 @@
 
 #include <string>
 #include <iostream>
-#include <utility>
 #include "graph.h"
 
 graph::graph(bool directed) {
