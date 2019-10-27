@@ -8,11 +8,10 @@ using namespace std;
 
 struct Node;
 
-
 struct Edge{
-    double pond;
-    Node* origin;
-    Node* end;
+    double pond = 0;
+    Node* origin = nullptr;
+    Node* end = nullptr;
 };
 
 
@@ -22,26 +21,25 @@ struct Node{
     double Lat,Long;
     vector<int> nexts;
 
-    double pond;
+    double pond = 0;
 };
-
 
 class graph {
 private:
-    bool is_directed;
-
     unsigned int nodes;
+    bool is_directed;
     vector<vector<Node*>> LA;
 public:
-    graph(bool isdirected);
+    explicit graph(bool isdirected);
 
     void createNodes(int _id, const string& _name, double _la, double _lo);
     void createNodes(int _id, const string&  _name, double _la, double _lo, double _pond);
     void createConection(int origin, int end);
     void createConection(int origin, int end, double pond);
 
-    Node* findNode(int key);
     void printNode(int key);
+    void calculatedistance(int key1, int key2);
+    Node* findNode(int key);
 };
 
 

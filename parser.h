@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include "graph.h"
 #include "json.hpp"
 #include <fstream>
 #include <cstdio>
@@ -10,14 +11,14 @@
 #include <string>
 using namespace std;
 
-bool isNumber(string s)
+bool isNumber(string coordinates)
 {
-    char simbolo=s.at(0);
+    char simbolo=coordinates.at(0);
     if (simbolo=='-'){
         return true;
     }
     else{
-        for (char i : s){
+        for (char i : coordinates){
             return isdigit(i) != 0;
         }
     }
@@ -78,8 +79,7 @@ vector<int>  getairportdestinations(nlohmann::json linea){
 }
 
 void fillin(){
-    //ifstream filename("/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/airports.json");
-    ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/airports.json");
+    ifstream filename("../airports.json");
     nlohmann::json jvalues = nlohmann::json::parse(filename);
     for (int i = 0; i < sizearray(jvalues); ++i) {
         cout<<parse(i,jvalues)<<endl;
@@ -89,6 +89,16 @@ void fillin(){
         cout<<getairportlongitude(parse(i,jvalues))<<endl;
         //Aqui se esta botando un vector donde estan todos los destinos asi que ya estan todo y como enteros, con un .size sacas puedes hacer un for y sacar todos
         cout<<getairportdestinations(parse(i,jvalues))[0]<<endl;
+    }
+}
+
+void createjsonnodes(){
+    ifstream filename("../airports.json");
+    nlohmann::json jvalues = nlohmann::json::parse(filename);
+    for (int i = 0; i < sizearray(jvalues); ++i) {
+        graph G = graph(true);
+        G.createNodes(getairportid(parse(i,jvalues)),getairportname(parse(i,jvalues)), getairportlatitude(parse(i,jvalues)), getairportlongitude(parse(i,jvalues)));
+        G.printNode(i);
     }
 }
 
