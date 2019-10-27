@@ -61,9 +61,11 @@ void graph::printNode(int key) {
 Node* graph::findNode(int key) {
     for (auto i : LA) {
         cout<<i[0]->Id<<endl;
+        cout<<typeid(i[0]).name()<<endl;
         if (i[0]->Id == key){
             cout<<i[0]->Name<<endl;
             return i[0];
+
         }
     }
     return nullptr;
