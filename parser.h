@@ -79,8 +79,7 @@ vector<int>  getairportdestinations(nlohmann::json linea){
 }
 
 void fillin(){
-    //ifstream filename("/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/airports.json");
-    ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/airports.json");
+    ifstream filename("../airports.json");
     nlohmann::json jvalues = nlohmann::json::parse(filename);
     for (int i = 0; i < sizearray(jvalues); ++i) {
         cout<<parse(i,jvalues)<<endl;
@@ -94,7 +93,7 @@ void fillin(){
 }
 
 void createjsonnodes(){
-    ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/airports.json");
+    ifstream filename("../airports.json");
     nlohmann::json jvalues = nlohmann::json::parse(filename);
     for (int i = 0; i < sizearray(jvalues); ++i) {
         graph G = graph(true);
