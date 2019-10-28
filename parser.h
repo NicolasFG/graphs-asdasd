@@ -98,17 +98,19 @@ void createjsonnodes(){
 
     for (int i = 0; i < sizearray(jvalues); ++i) {
         G.createNodes(getairportid(parse(i,jvalues)),getairportname(parse(i,jvalues)), getairportlatitude(parse(i,jvalues)), getairportlongitude(parse(i,jvalues)));
-        auto tempnodeorigin=getairportid(parse(i,jvalues));
-
-        for (int y=0; y<getairportdestinations(parse(i,jvalues)).size();++y){
-            int airportidtemp=getairportdestinations(parse(i,jvalues))[y];
-            double distance=G.calculatedistance(tempnodeorigin,airportidtemp);
-            G.createConection(tempnodeorigin,airportidtemp,distance);
-        }
-
         G.printNode(getairportid(parse(i,jvalues)));
-        cout<<G.calculatedistance(getairportid(parse(i,jvalues)),7252)<<endl;
     }
+
+    for (int i = 0; i < sizearray(jvalues); ++i) {
+        auto tempnodeorigin=getairportid(parse(i,jvalues));
+        //cout<<G.calculatedistance(getairportid(parse(i,jvalues)),6972)<<endl;
+        for (int y = 0; y < getairportdestinations(parse(i, jvalues)).size(); ++y) {
+            int airportidtemp = getairportdestinations(parse(i, jvalues))[y];
+            double distance = G.calculatedistance(tempnodeorigin, airportidtemp);
+            G.createConection(tempnodeorigin, airportidtemp, distance);
+        }
+    }
+
 }
 
 #endif //GRAPHS_ASDASD_PARSER_H
