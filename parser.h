@@ -100,9 +100,10 @@ void createjsonnodes(){
         G.createNodes(getairportid(parse(i,jvalues)),getairportname(parse(i,jvalues)), getairportlatitude(parse(i,jvalues)), getairportlongitude(parse(i,jvalues)));
         auto tempnodeorigin=getairportid(parse(i,jvalues));
 
-        for (int y=0; y<getairportdestinations(parse(y,jvalues)).size();++y){
-            double distance=G.calculatedistance(tempnodeorigin,getairportid(parse(y,jvalues)));
-            G.createConection(tempnodeorigin,getairportid(parse(y,jvalues)),distance);
+        for (int y=0; y<getairportdestinations(parse(i,jvalues)).size();++y){
+            int airportidtemp=getairportdestinations(parse(i,jvalues))[y];
+            double distance=G.calculatedistance(tempnodeorigin,airportidtemp);
+            G.createConection(tempnodeorigin,airportidtemp,distance);
         }
 
         G.printNode(getairportid(parse(i,jvalues)));
