@@ -61,6 +61,13 @@ void graph::createConection(int origin, int end) {
             i.push_back(auxEdge->end);
         }
     }
+    if (!is_directed){
+        for (auto i : LA){
+            if (i[0] == auxEdge->end){
+                i.push_back(auxEdge->origin);
+            }
+        }
+    }
 }
 
 void graph::printNode(int key) {
