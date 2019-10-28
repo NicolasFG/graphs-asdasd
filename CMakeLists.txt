@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS -pthread)
 
 
-add_executable(graphs-asdasd parser.h graph.cpp main.cpp)
+add_executable(graphs-asdasd graph.h parser.h graph.cpp main.cpp)
