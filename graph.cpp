@@ -78,7 +78,7 @@ void graph::createConection(int origin, int end, double pond) {
     auxEdge->origin = findNode(origin);
     auxEdge->end = findNode(end);
     auxEdge->pond = pond;
-    for (auto i : LA){
+    for (auto & i : LA){
         if (i[0] == auxEdge->origin){
             i.push_back(auxEdge->end);
         }
@@ -199,22 +199,25 @@ void graph::removeNode(int _id) {
     for (auto i : temp->nexts){
         removeConnection(i->origin->Id, i->end->Id);
     }
-    //Borrar todos los edges que llegan al NODO y el rastro en la lista de adyacencia LA
+    //Borrar todos los edges que llegan al NODO y su rastro en la lista de adyacencia LA
     for (auto j : LA){
         auto it1 = j.begin();
-        //K era 1 aqui - se cambia a 0
-        for (int k = 1; k < j.size(); ++k) {
-            if (j[k]->Id == _id){
+        //++it1;
+        for (auto k : j) {
+            cout << k->Name << endl;
+            if (k== temp){
                 auto it2 = j[0]->nexts.begin();
                 for(auto m : j[0]->nexts){
                     if (m->end == temp){
                         j[0]->nexts.erase(it2);
+                        break;
                     }
                     ++it2;
                 }
                 j.erase(it1);
                 break;
             }
+            ++it1;
         }
     }
 
@@ -222,6 +225,7 @@ void graph::removeNode(int _id) {
     auto itSupremo = LA.begin();
     for (auto n : LA){
         if(n[0] == temp){
+            n.clear();
             LA.erase(itSupremo);
             break;
         }
@@ -231,6 +235,17 @@ void graph::removeNode(int _id) {
     //Borrar el nodo
     delete temp;
 }
+
+void graph::printLA(){
+    for (auto & x : LA){
+        cout << x.size() << " = ";
+        for (auto & y : x){
+            cout << y->Name << " - " << y->Id << " | ";
+        }
+        cout << endl;
+    }
+}
+
 
 bool connexo(){
 
