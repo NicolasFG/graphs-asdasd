@@ -70,6 +70,7 @@ void graph::createConection(int origin, int end) {
         }
         auxEdge->end->nexts.push_back(auxEdge);
     }
+    edges++;
 }
 
 void graph::createConection(int origin, int end, double pond) {
@@ -91,6 +92,7 @@ void graph::createConection(int origin, int end, double pond) {
         }
         auxEdge->end->nexts.push_back(auxEdge);
     }
+    edges++;
 }
 
 void graph::printNode(int key) {
