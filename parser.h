@@ -102,12 +102,21 @@ void createjsonnodes(){
     }
 
     for (int i = 0; i < sizearray(jvalues); ++i) {
-        auto tempnodeorigin=getairportid(parse(i,jvalues));
-        //cout<<G.calculatedistance(getairportid(parse(i,jvalues)),6972)<<endl;
+        int tempnodeorigin=getairportid(parse(i,jvalues));
         for (int y = 0; y < getairportdestinations(parse(i, jvalues)).size(); ++y) {
             int airportidtemp = getairportdestinations(parse(i, jvalues))[y];
             double distance = G.calculatedistance(tempnodeorigin, airportidtemp);
             G.createConection(tempnodeorigin, airportidtemp, distance);
+        }
+    }
+
+    //Pruebas
+    for (int i = 0; i < sizearray(jvalues); ++i) {
+        int tempnodeorigin=getairportid(parse(i,jvalues));
+        auto nodetemporal = G.findNode(tempnodeorigin);
+        for (auto & next : nodetemporal->nexts) {
+            int temp = next->end->Id;
+            cout<<"El nodo: "<<tempnodeorigin<<", tiene coneccion con el nodo: "<<temp<<endl;
         }
     }
 
