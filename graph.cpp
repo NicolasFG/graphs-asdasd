@@ -109,14 +109,17 @@ Node* graph::findNode(int key) {
     return nullptr;
 }
 
-double graph::calculate_density(float cota){
+double graph::calculateDensity() {
+    double densidad = static_cast<double>(edges)/ (nodes * (nodes - 1));
+    if (!is_directed) {
+        densidad *= 2;
+    }
+    return densidad;
+}
 
-    double densidad = edges / nodes*(nodes-1);
-
+string graph::denseOrDispersed(double densidad, double cota){
     if(densidad >= cota){
-       // cout<<"Es denso"<<endl;
+       return "Es denso";
     }
-    if(densidad < cota){
-       // cout<<"Es disperso"<<endl;
-    }
+    return "Es disperso";
 }

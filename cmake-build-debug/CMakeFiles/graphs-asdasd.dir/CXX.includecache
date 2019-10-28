@@ -357,6 +357,8 @@ iostream
 -
 cstdlib
 -
+graph.h
+/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
 json.hpp
 /home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/json.hpp
 fstream

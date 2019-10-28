@@ -38,10 +38,11 @@ public:
     void createConection(int origin, int end);
     void createConection(int origin, int end, double pond);
 
-    double calculate_density(float cota);
-    
-    void printNode(int key);
+    double calculateDensity();
+    static string denseOrDispersed(double densidad, double cota);
+
     double calculatedistance(int key1, int key2);
+    void printNode(int key);
     Node* findNode(int key);
 };
 
