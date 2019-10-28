@@ -109,6 +109,21 @@ Node* graph::findNode(int key) {
     return nullptr;
 }
 
+Edge* graph::findArista(int key1, int key2) {
+    for (auto i : LA) {
+        if (i[0]->Id == key1){
+            vector <Edge*> temprecorrido = i[0]->nexts;
+            for (auto & y : temprecorrido){
+                if(y->end->Id==key2){
+                    return y;
+                }
+            }
+            return nullptr;
+        }
+    }
+    return nullptr;
+}
+
 double graph::calculate_density(float cota){
 
     double densidad = edges / (nodes*(nodes-1));

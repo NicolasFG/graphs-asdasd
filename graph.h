@@ -43,6 +43,7 @@ public:
     void printNode(int key);
     double calculatedistance(int key1, int key2);
     Node* findNode(int key);
+    Edge* findArista(int key1, int key2);
 };
 
 
