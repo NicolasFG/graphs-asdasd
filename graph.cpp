@@ -64,16 +64,29 @@ void graph::createConection(int origin, int end) {
 }
 
 void graph::printNode(int key) {
-    Node* x = findNode(key);
-    cout<<x->Name<<endl;
+    Node* temporal = findNode(key);
+    cout<<temporal->Name<<"-"<<temporal->Id<<endl;
 }
 
+/*
 Node* graph::findNode(int key) {
-    for (auto & i : LA) {
-        cout<<i[0]->Id<<endl;
+    for (int i=0; i<LA.size(); ++i) {
+        cout<<LA[i][0]->Id<<endl;
+        if (LA[i][0]->Id == key){
+            return LA[i][0];
+        }
+    }
+    return nullptr;
+}
+*/
+
+Node* graph::findNode(int key) {
+    for (auto i : LA) {
+        //cout<<i[0]->Id<<endl;
         if (i[0]->Id == key){
             return i[0];
         }
     }
     return nullptr;
 }
+
