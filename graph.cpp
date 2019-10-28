@@ -20,25 +20,6 @@ void graph::createNodes(int _id, const string& _name, double _la, double _lo) {
     nodes++;
 }
 
-double deg2rad(double deg) {
-    return deg * (M_PI/180);
-}
-
-double graph::calculatedistance(int key1, int key2) {
-    int R = 6371;
-    auto x = findNode(key1);
-    auto y = findNode(key2);
-    double diflat = deg2rad(x->Lat-y->Lat);
-    double diflong = deg2rad(x->Long-y->Long);
-    double z =
-            sin(diflat/2)*sin(diflat/2)+
-            cos(deg2rad(y->Lat))*cos(deg2rad(x->Lat))*
-            sin(diflong/2)*sin(diflong/2);
-    double c= 2*atan2(sqrt(z),sqrt(1-z));
-    double d= R*c;
-    return d;
-}
-
 void graph::createNodes(int _id, const string& _name, double _la, double _lo, double _pond) {
     Node* auxNode = new Node;
     auxNode->Id = _id;
@@ -95,6 +76,25 @@ void graph::createConection(int origin, int end, double pond) {
     edges++;
 }
 
+double deg2rad(double deg) {
+    return deg * (M_PI/180);
+}
+
+double graph::calculatedistance(int key1, int key2) {
+    int R = 6371;
+    auto x = findNode(key1);
+    auto y = findNode(key2);
+    double diflat = deg2rad(x->Lat-y->Lat);
+    double diflong = deg2rad(x->Long-y->Long);
+    double z =
+            sin(diflat/2)*sin(diflat/2)+
+            cos(deg2rad(y->Lat))*cos(deg2rad(x->Lat))*
+            sin(diflong/2)*sin(diflong/2);
+    double c= 2*atan2(sqrt(z),sqrt(1-z));
+    double d= R*c;
+    return d;
+}
+
 void graph::printNode(int key) {
     Node* temporal = findNode(key);
     cout<<temporal->Name<<"-"<<temporal->Id<<endl;
@@ -137,4 +137,8 @@ string graph::denseOrDispersed(double densidad, double cota){
         return "Es denso";
     }
     return "Es disperso";
+}
+
+bool graph::connexo() {
+
 }

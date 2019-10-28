@@ -45,6 +45,7 @@ public:
     void printNode(int key);
     Node* findNode(int key);
     Edge* findArista(int key1, int key2);
+    bool connexo();
 };
 
 
