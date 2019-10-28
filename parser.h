@@ -95,8 +95,16 @@ void createjsonnodes(){
     ifstream filename("../airports.json");
     nlohmann::json jvalues = nlohmann::json::parse(filename);
     graph G = graph(true);
+
     for (int i = 0; i < sizearray(jvalues); ++i) {
         G.createNodes(getairportid(parse(i,jvalues)),getairportname(parse(i,jvalues)), getairportlatitude(parse(i,jvalues)), getairportlongitude(parse(i,jvalues)));
+        auto tempnodeorigin=getairportid(parse(i,jvalues));
+
+        for (int y=0; y<getairportdestinations(parse(y,jvalues)).size();++y){
+            double distance=G.calculatedistance(tempnodeorigin,getairportid(parse(y,jvalues)));
+            G.createConection(tempnodeorigin,getairportid(parse(y,jvalues)),distance);
+        }
+
         G.printNode(getairportid(parse(i,jvalues)));
         cout<<G.calculatedistance(getairportid(parse(i,jvalues)),7252)<<endl;
     }

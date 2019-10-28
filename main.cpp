@@ -7,5 +7,4 @@ using namespace std;
 int main(){
     //fillin();
     createjsonnodes();
-    tests();
 }
