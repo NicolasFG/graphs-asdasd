@@ -94,20 +94,11 @@ void fillin(){
 void createjsonnodes(){
     ifstream filename("../airports.json");
     nlohmann::json jvalues = nlohmann::json::parse(filename);
+    graph G = graph(true);
     for (int i = 0; i < sizearray(jvalues); ++i) {
-        graph G = graph(true);
         G.createNodes(getairportid(parse(i,jvalues)),getairportname(parse(i,jvalues)), getairportlatitude(parse(i,jvalues)), getairportlongitude(parse(i,jvalues)));
         G.printNode(getairportid(parse(i,jvalues)));
-        //cout<<G.calculatedistance(getairportid(parse(i,jvalues)),7252)<<endl;
-        //G.printNode(6972);
-    }
-}
-
-void tests(){
-    graph G = graph(true);
-    int y=9;
-    for (int i = 0; i < y; ++i) {
-        G.printNode(7252);
+        cout<<G.calculatedistance(getairportid(parse(i,jvalues)),7252)<<endl;
     }
 }
 
