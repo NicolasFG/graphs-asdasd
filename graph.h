@@ -26,7 +26,7 @@ struct Node{
 
 class graph {
 private:
-    unsigned int nodes,edges;
+    unsigned int nodes,edges{};
     bool is_directed;
     vector<vector<Node*>> LA;
 
