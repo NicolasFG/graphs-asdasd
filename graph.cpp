@@ -138,3 +138,12 @@ string graph::denseOrDispersed(double densidad, double cota){
     }
     return "Es disperso";
 }
+
+int graph::getNodeIdByName(const string &Name) {
+    for (auto i : LA) {
+        if (i[0]->Name == Name){
+            return i[0]->Id;
+        }
+    }
+    return 0;
+}
