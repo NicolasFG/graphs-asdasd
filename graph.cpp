@@ -5,6 +5,7 @@
 
 graph::graph(bool directed) {
     nodes = 0;
+    edges = 0;
     is_directed = directed;
 }
 
@@ -109,12 +110,12 @@ Node* graph::findNode(int key) {
     return nullptr;
 }
 
-Edge* graph::findArista(int key1, int key2) {
+Edge* graph::findArista(int OriginKey, int EndKey) {
     for (auto i : LA) {
-        if (i[0]->Id == key1){
+        if (i[0]->Id == OriginKey){
             vector <Edge*> tempRecorrido = i[0]->nexts;
             for (auto & y : tempRecorrido){
-                if(y->end->Id==key2){
+                if(y->end->Id == EndKey){
                     return y;
                 }
             }
@@ -138,3 +139,43 @@ string graph::denseOrDispersed(double densidad, double cota){
     }
     return "Es disperso";
 }
+
+void graph::removeNode(int _id) {
+    // TODO
+}
+
+void graph::removeConnection(int OriginKey, int EndKey) {
+    // TODO
+}
+
+bool graph::isConexo() {
+    return false;
+}
+
+bool graph::isFuertementeConexo() {
+    return false;
+}
+
+bool graph::isBipartito() {
+    return false;
+}
+
+string graph::getPrim() {
+    // TODO
+}
+
+string graph::getKruskal() {
+    // TODO
+}
+
+int graph::getNodeIdByName(const string& Name) {
+    for (auto i : LA) {
+        if (i[0]->Name == Name){
+            return i[0]->Id;
+        }
+    }
+    return 0;
+}
+
+
+
