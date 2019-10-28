@@ -112,8 +112,8 @@ Node* graph::findNode(int key) {
 Edge* graph::findArista(int key1, int key2) {
     for (auto i : LA) {
         if (i[0]->Id == key1){
-            vector <Edge*> temprecorrido = i[0]->nexts;
-            for (auto & y : temprecorrido){
+            vector <Edge*> tempRecorrido = i[0]->nexts;
+            for (auto & y : tempRecorrido){
                 if(y->end->Id==key2){
                     return y;
                 }
@@ -123,7 +123,6 @@ Edge* graph::findArista(int key1, int key2) {
     }
     return nullptr;
 }
-
 
 double graph::calculateDensity() {
     double densidad = static_cast<double>(edges)/ (nodes * (nodes - 1));
