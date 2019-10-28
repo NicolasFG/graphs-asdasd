@@ -100,28 +100,14 @@ void graph::printNode(int key) {
     cout<<temporal->Name<<"-"<<temporal->Id<<endl;
 }
 
-/*
-Node* graph::findNode(int key) {
-    for (int i=0; i<LA.size(); ++i) {
-        cout<<LA[i][0]->Id<<endl;
-        if (LA[i][0]->Id == key){
-            return LA[i][0];
-        }
-    }
-    return nullptr;
-}
-*/
-
 Node* graph::findNode(int key) {
     for (auto i : LA) {
-        //cout<<i[0]->Id<<endl;
         if (i[0]->Id == key){
             return i[0];
         }
     }
     return nullptr;
 }
-
 
 double graph::calculate_density(float cota){
 
