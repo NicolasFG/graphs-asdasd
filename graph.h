@@ -44,7 +44,7 @@ public:
     Edge* findArista(int OriginKey, int EndKey);
 
     double calculateDensity();  
-    string denseOrDispersed(double densidad, double cota);
+    static string denseOrDispersed(double densidad, double cota);
     bool isConexo();
     bool isFuertementeConexo();
     bool is_bipartite(graph G,int n);

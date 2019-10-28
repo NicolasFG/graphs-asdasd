@@ -163,7 +163,9 @@ void graph::printArista(int OriginKey, int EndKey) {
                 << " - Destino : " << temporal->end->Name
                 << " - Distancia : " << temporal->pond
                 << endl;
-    } else {
+    }
+
+    else {
         cout << "No se encontró lo que buscaba. " << endl;
     }
 }
@@ -200,6 +202,7 @@ void graph::removeNode(int _id) {
     //Borrar todos los edges que llegan al NODO y el rastro en la lista de adyacencia LA
     for (auto j : LA){
         auto it1 = j.begin();
+        //K era 1 aqui - se cambia a 0
         for (int k = 1; k < j.size(); ++k) {
             if (j[k]->Id == _id){
                 auto it2 = j[0]->nexts.begin();
@@ -219,7 +222,6 @@ void graph::removeNode(int _id) {
     auto itSupremo = LA.begin();
     for (auto n : LA){
         if(n[0] == temp){
-            n.clear();
             LA.erase(itSupremo);
             break;
         }
@@ -228,6 +230,10 @@ void graph::removeNode(int _id) {
 
     //Borrar el nodo
     delete temp;
+}
+
+bool connexo(){
+
 }
 
 
