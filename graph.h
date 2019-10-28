@@ -19,7 +19,7 @@ struct Node{
     int Id;
     string Name;
     double Lat,Long;
-    vector<int> nexts;
+    vector<Edge*> nexts;
 
     double pond = 0;
 };

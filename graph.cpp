@@ -61,12 +61,35 @@ void graph::createConection(int origin, int end) {
             i.push_back(auxEdge->end);
         }
     }
+    auxEdge->origin->nexts.push_back(auxEdge);
     if (!is_directed){
         for (auto i : LA){
             if (i[0] == auxEdge->end){
                 i.push_back(auxEdge->origin);
             }
         }
+        auxEdge->end->nexts.push_back(auxEdge);
+    }
+}
+
+void graph::createConection(int origin, int end, double pond) {
+    auto auxEdge = new Edge;
+    auxEdge->origin = findNode(origin);
+    auxEdge->end = findNode(end);
+    auxEdge->pond = pond;
+    for (auto i : LA){
+        if (i[0] == auxEdge->origin){
+            i.push_back(auxEdge->end);
+        }
+    }
+    auxEdge->origin->nexts.push_back(auxEdge);
+    if (!is_directed){
+        for (auto i : LA){
+            if (i[0] == auxEdge->end){
+                i.push_back(auxEdge->origin);
+            }
+        }
+        auxEdge->end->nexts.push_back(auxEdge);
     }
 }
 
