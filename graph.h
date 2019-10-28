@@ -47,7 +47,7 @@ public:
     static string denseOrDispersed(double densidad, double cota);
     static bool isConexo();
     static bool isFuertementeConexo();
-    static bool isBipartito();
+    static bool is_bipartite(graph G,int n);
 
     static string getPrim();
     static string getKruskal();
