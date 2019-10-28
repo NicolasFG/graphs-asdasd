@@ -119,7 +119,7 @@ double graph::calculateDensity() {
 
 string graph::denseOrDispersed(double densidad, double cota){
     if(densidad >= cota){
-       return "Es denso";
+        return "Es denso";
     }
     return "Es disperso";
 }
