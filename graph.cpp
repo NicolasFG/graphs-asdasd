@@ -147,3 +147,40 @@ int graph::getNodeIdByName(const string &Name) {
     }
     return 0;
 }
+
+
+/*
+bool graph::is_bipartite(graph G,int n){
+    vector<bool> discovered;
+    vector<int> color={0};
+    discovered={true};
+cout<<"hola";
+
+for (int i = 0; i <= G.LA.size(); ++i) {
+
+        for (int j = 0; j < G.LA[i].size(); ++j) {
+            if (discovered[j] == false) {
+                discovered[n] = true;
+                color[n] = !color[j];
+
+                if (!is_bipartite(G, n)) {
+                    return false;
+                }
+            } else if (color[j] == color[n]) {
+                return false;
+            }
+
+        }
+}
+    return true;
+}
+
+string graph::Kruskal() {
+    
+
+    if(is_directed){
+        throw invalid_argument("no es dirigido");
+    }
+
+
+}*/
