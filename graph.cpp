@@ -197,14 +197,16 @@ void graph::removeNode(int _id) {
         removeConnection(i->origin->Id, i->end.id);
     }
     for (auto j : LA){
+        auto it1 = j[0]->nexts.begin();
         for (int k = 1; k < j.size(); ++k) {
             if (j[k]->Id == _id){
-                auto it1 = j[0]->nexts.begin();
+
+                auto it2 = j[0]->nexts.begin();
                 for(auto m : j[0]->nexts){
                     if (m->end == temp){
-                        j[0]->nexts.erase(it1);
+                        j[0]->nexts.erase(it2);
                     }
-                    ++it1;
+                    ++it2;
                 }
             }
         }
