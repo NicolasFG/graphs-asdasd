@@ -122,3 +122,15 @@ Node* graph::findNode(int key) {
     return nullptr;
 }
 
+
+double graph::calculate_density(float cota){
+
+    double densidad = edges / nodes*(nodes-1);
+
+    if(densidad >= cota){
+       // cout<<"Es denso"<<endl;
+    }
+    if(densidad < cota){
+       // cout<<"Es disperso"<<endl;
+    }
+}
