@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.cpp
+string
+-
+iostream
+-
+cmath
+-
+graph.h
+/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
+
 /home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
 vector
 -
