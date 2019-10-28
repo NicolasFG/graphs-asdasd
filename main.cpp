@@ -12,7 +12,13 @@ void trials(){
     G.createNodes(2, "Paris", 140.0, 110);
     G.createNodes(3, "Ethiopia", 60.0, 130);
 
-    //G.createConection();
+    G.createConection(0,1);
+
+    G.printArista(0,1);
+
+    G.removeConnection(0,1);
+
+    G.printArista(0,1);
 
 
 

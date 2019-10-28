@@ -28,7 +28,7 @@ class graph {
 private:
     unsigned int nodes,edges{};
     bool is_directed;
-    static vector<vector<Node*>> LA;
+    vector<vector<Node*>> LA;
 
 public:
     explicit graph(bool isdirected);
@@ -37,23 +37,23 @@ public:
     void createNodes(int _id, const string&  _name, double _la, double _lo, double _pond);
     void createConection(int origin, int end);
     void createConection(int origin, int end, double pond);
-    static void removeNode(int _id);
-    static void removeConnection(int OriginKey, int EndKey);
+    void removeNode(int _id);
+    void removeConnection(int OriginKey, int EndKey);
 
-    static Node* findNode(int key);
-    static Edge* findArista(int OriginKey, int EndKey);
+    Node* findNode(int key);
+    Edge* findArista(int OriginKey, int EndKey);
 
     double calculateDensity();  
-    static string denseOrDispersed(double densidad, double cota);
-    static bool isConexo();
-    static bool isFuertementeConexo();
-    static bool is_bipartite(graph G,int n);
+    string denseOrDispersed(double densidad, double cota);
+    bool isConexo();
+    bool isFuertementeConexo();
+    bool is_bipartite(graph G,int n);
 
-    static string getPrim();
-    static string getKruskal();
+    string getPrim();
+    string getKruskal();
 
-    static int getNodeIdByName(const string& Name);
-    static double calculatedistance(int key1, int key2);
+    int getNodeIdByName(const string& Name);
+    double calculatedistance(int key1, int key2);
     void printNode(int key);
     void printArista(int OriginKey, int EndKey);
 

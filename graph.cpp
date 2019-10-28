@@ -99,9 +99,9 @@ void graph::printNode(int key) {
     Node* temporal = findNode(key);
     if(temporal){
         cout
-        << "Nombre : " << temporal->Name
-        << " - ID: " << temporal->Id
-        << endl;
+                << "Nombre : " << temporal->Name
+                << " - ID: " << temporal->Id
+                << endl;
     } else {
         cout << "No se encontró lo que buscaba. " << endl;
     }
@@ -159,24 +159,53 @@ void graph::printArista(int OriginKey, int EndKey) {
     Edge* temporal = findArista(OriginKey, EndKey);
     if(temporal){
         cout
-        << "Origen : " << temporal->origin->Name
-        << " - Destino : " << temporal->end->Id
-        << "Distancia : " << temporal->pond
-        << endl;
+                << "Origen : " << temporal->origin->Name
+                << " - Destino : " << temporal->end->Id
+                << " - Distancia : " << temporal->pond
+                << endl;
     } else {
         cout << "No se encontró lo que buscaba. " << endl;
     }
 }
 
 void graph::removeConnection(int OriginKey, int EndKey) {
+    auto temp = findArista(OriginKey, EndKey);
     for (auto i : LA){
         if(i[0]->Id == OriginKey){
-            auto it = i[0]->nexts.begin();
+            auto it1 = i[0]->nexts.begin();
             for (auto x : i[0]->nexts){
-                if(x->end->Id == EndKey){
-                    i[0]->nexts.erase(it);
+                if(x == temp){
+                    i[0]->nexts.erase(it1);
                 }
-                ++it;
+                ++it1;
+            }
+            auto it2 = i.begin();
+            for(auto y : i){
+                if (y->Id == EndKey){
+                    i.erase(it2);
+                }
+                ++it2;
+            }
+        }
+    }
+    delete temp;
+}
+
+void graph::removeNode(int _id) {
+    auto temp = findNode(_id);
+    for (auto i : temp->nexts){
+        removeConnection(i->origin->Id, i->end.id);
+    }
+    for (auto j : LA){
+        for (int k = 1; k < j.size(); ++k) {
+            if (j[k]->Id == _id){
+                auto it1 = j[0]->nexts.begin();
+                for(auto m : j[0]->nexts){
+                    if (m->end == temp){
+                        j[0]->nexts.erase(it1);
+                    }
+                    ++it1;
+                }
             }
         }
     }
