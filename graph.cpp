@@ -111,7 +111,7 @@ Node* graph::findNode(int key) {
 
 double graph::calculate_density(float cota){
 
-    double densidad = edges / nodes*(nodes-1);
+    double densidad = edges / (nodes*(nodes-1));
 
     if(densidad >= cota){
        // cout<<"Es denso"<<endl;
