@@ -38,6 +38,8 @@ public:
     void createConection(int origin, int end);
     void createConection(int origin, int end, double pond);
 
+    double calculate_density(float cota);
+    
     void printNode(int key);
     double calculatedistance(int key1, int key2);
     Node* findNode(int key);
