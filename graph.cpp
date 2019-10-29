@@ -299,8 +299,8 @@ void graph::primMST(){
             double temp3=findArista(temp1,temp2)->pond;
 
             if (temp3 && !mstSet[k] and temp3 < key[k]){
-                parent[k] = u;
-                key[k] = temp3;
+                parent.push_back(u);
+                key.push_back(temp3);
             }
         }
     }
