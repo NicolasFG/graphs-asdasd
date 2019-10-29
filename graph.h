@@ -58,6 +58,9 @@ public:
     void printArista(int OriginKey, int EndKey);
     void printLA();
     void filledges();
+    int minKey(vector<int> key, vector<bool> mstSet);
+    void printMST(const vector<int>& parent);
+    void primMST();
 
 
 };

@@ -246,13 +246,65 @@ void graph::printLA(){
 
 void graph::filledges(){
     vector<Edge*> compilado;
-    for (int i = 0; i < LA.size(); ++i) {
-        for (int j = 0; j < LA[i].size(); ++j) {
-            for (int k = 0; k < LA[i][j]->nexts.size(); ++k) {
-                compilado.push_back(LA[i][j]->nexts[k]);
+    for (auto & i : LA) {
+        for (auto & j : i) {
+            for (auto next : j->nexts) {
+                compilado.push_back(next);
             }
         }
     }
+}
+
+
+//Pruebas Prim
+int graph::minKey(vector<int> key, vector<bool> mstSet){
+    int min = INT_MAX;
+    //Deberia ser int, pero como lo igualo a i, que es un unsigned long por lo que es el iterador del vector
+    auto min_index = 0;
+    for (unsigned long i = 0; i < LA.size(); ++i) {
+        if (!mstSet[i] and key[i] < min){
+            min = key[i];
+            min_index = i;
+        }
+    }
+    return min_index;
+}
+
+void graph::printMST(const vector<int>& parent){
+    cout<<"Edge \tWeight\n";
+    for (unsigned long i = 1; i < LA.size(); i++){
+        cout<<parent[i]<<" - "<<i<<" \t"<<LA[i][parent[i]]<<" \n";
+    }
+}
+
+void graph::primMST(){
+    vector<int> parent;
+    vector<int> key;
+    vector<bool> mstSet;
+
+    for (unsigned long i = 0; i < LA.size(); ++i){
+        key.push_back(INT_MAX);
+        mstSet.push_back(false);
+    }
+    key[0] = 0;
+    parent.push_back(-1);
+
+    for (unsigned long j = 0; j < LA.size() - 1; ++j){
+        int u = minKey(key, mstSet);
+        mstSet[u] = true;
+
+        for (unsigned long k = 1; k < LA.size(); ++k) {
+            int temp1=LA[u][0]->Id;
+            int temp2=LA[u][k]->Id;
+            double temp3=findArista(temp1,temp2)->pond;
+
+            if (temp3 && !mstSet[k] and temp3 < key[k]){
+                parent[k] = u;
+                key[k] = temp3;
+            }
+        }
+    }
+    printMST(parent);
 }
 
 
