@@ -23,15 +23,15 @@ void trials(){
     G.printArista(0,1);
     G.printArista(3,0);
 
-    G.primMST();
+
 
 
 }
 
 int main(){
     //fillin();
-    //createjsonnodes();
-    trials();
+    createjsonnodes();
+    //trials();
 
     return 0;
 }

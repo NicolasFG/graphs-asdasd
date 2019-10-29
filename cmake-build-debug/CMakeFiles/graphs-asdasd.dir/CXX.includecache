@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.cpp
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.cpp
 string
 -
 iostream
@@ -14,9 +14,9 @@ iostream
 cmath
 -
 graph.h
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
 vector
 -
 

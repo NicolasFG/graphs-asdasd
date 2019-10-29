@@ -1,4 +1,4 @@
-/snap/clion/88/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/bin/c++ -G "CodeBlocks - Unix Makefiles" /home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jonathanprieto/Documents/GitHub/graphs-asdasd
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/cmake-build-debug
+-- Build files have been written to: /Users/jonathanprieto/Documents/GitHub/graphs-asdasd/cmake-build-debug

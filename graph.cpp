@@ -293,7 +293,7 @@ void graph::primMST(){
         int u = minKey(key, mstSet);
         mstSet[u] = true;
 
-        for (unsigned long k = 1; k < LA.size(); ++k) {
+        for (unsigned long k = 1; k < LA[u].size()-1; ++k) {
             int temp1=LA[u][0]->Id;
             int temp2=LA[u][k]->Id;
             double temp3=findArista(temp1,temp2)->pond;
