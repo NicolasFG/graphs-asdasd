@@ -273,7 +273,7 @@ int graph::minKey(vector<int> key, vector<bool> mstSet){
 void graph::printMST(const vector<int>& parent){
     cout<<"Edge \tWeight\n";
     for (unsigned long i = 1; i < LA.size(); i++){
-        cout<<parent[i]<<" - "<<i<<" \t"<<LA[i][parent[i]]<<" \n";
+        cout<<parent[i]<<" - "<<LA[i][parent[i]]->Id<<" \t"<<findArista(parent[i],LA[i][parent[i]]->Id)->pond<<" \n";
     }
 }
 
@@ -298,8 +298,8 @@ void graph::primMST(){
             int temp2=LA[u][k]->Id;
             double temp3=findArista(temp1,temp2)->pond;
 
-            if (temp3 && !mstSet[k] and temp3 < key[k]){
-                parent.push_back(u);
+            if (temp3!=0 && !mstSet[k] and temp3 < key[k]){
+                parent.push_back(LA[u][0]->Id);
                 key.push_back(temp3);
             }
         }
