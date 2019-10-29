@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 #include "graph.h"
 
 graph::graph(bool directed) {
@@ -244,7 +245,7 @@ void graph::printLA(){
     }
 }
 
-void graph::filledges(){
+vector<Edge*> graph::filledges(){
     vector<Edge*> compilado;
     for (auto & i : LA) {
         for (auto & j : i) {
@@ -254,11 +255,85 @@ void graph::filledges(){
         }
     }
 }
+unsigned int graph::getNodes() {
+    return nodes;
+}
+
+
+vector<bool> graph::fillvectordiscovered(graph G,vector<bool> vector) {
+    for (int i = 0; i <= G.LA.size(); ++i) {
+
+        for (int j = 0; j <G.LA.size(); ++j) {
+            vector.push_back(false);
+        }
+        }
+    return vector;}
+
+
+bool graph::is_bipartite(graph G,int n,vector<bool> &discovered,vector <int> &color){
+
+
+    for (int i = 0; i <= G.LA.size(); ++i) {
+
+        for (int j = 1; j < G.LA[i].size(); ++j) {
+            if (discovered[j] == false) {
+                discovered[j] = true;
+                color[n] = !color[j];
+               bool a=is_bipartite(G,j,discovered,color);
+               if(!a){
+                   return false;
+               }
+            } else return color[j] != color[n];
+
+        }
+    }
+    return true;
+}
+
+
+string graph::getKruskal() {
+
+    if (is_directed) {
+        cout << "kruskal no funciona para dirigidos" << endl;
+    } else {
+        vector<double> pesos;
+        vector<Edge *> aristas;
+        aristas = filledges();
+
+        for (int i = 0; i <= LA.size(); ++i) {
+
+            for (int j = 0; j < LA[i].size(); ++j) {
+                pesos.push_back(aristas[j]->pond);
+                cout << pesos[j] << endl;
+            }
+        }
+
+        sort(pesos.begin(), pesos.end());
+
+        for (int i = 0; i <= LA.size(); ++i) {
+
+            for (int j = 0; j < LA.size(); ++j) {
+                if (pesos[i] == aristas[j]->pond) {
+                    aristas[i] = aristas[j];
+                }
+            }
+        }
+        for (int k = 1; k < 10; ++k) {
+
+            cout << "Paso " << k << ": (" << aristas[k]->origin->Name << "," << aristas[k]->end->Name << ")" << endl;
+
+        }
+
+
+    }
+
+}
+
 
 
 //Pruebas Prim
 int graph::minKey(vector<int> key, vector<bool> mstSet){
-    int min = INT_MAX;
+    int min =  2147483647;
     //Deberia ser int, pero como lo igualo a i, que es un unsigned long por lo que es el iterador del vector
     auto min_index = 0;
     for (unsigned long i = 0; i < LA.size(); ++i) {
@@ -283,7 +358,7 @@ void graph::primMST(){
     vector<bool> mstSet;
 
     for (unsigned long i = 0; i < LA.size(); ++i){
-        key.push_back(INT_MAX);
+        key.push_back(2147483647);
         mstSet.push_back(false);
     }
     key[0] = 0;
@@ -306,5 +381,4 @@ void graph::primMST(){
     }
     printMST(parent);
 }
-
 
