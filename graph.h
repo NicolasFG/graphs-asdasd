@@ -57,6 +57,7 @@ public:
     void printNode(int key);
     void printArista(int OriginKey, int EndKey);
     void printLA();
+    void filledges();
 
 
 };

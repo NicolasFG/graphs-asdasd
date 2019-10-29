@@ -202,9 +202,7 @@ void graph::removeNode(int _id) {
     //Borrar todos los edges que llegan al NODO y su rastro en la lista de adyacencia LA
     for (auto j : LA){
         auto it1 = j.begin();
-        //++it1;
         for (auto k : j) {
-            cout << k->Name << endl;
             if (k== temp){
                 auto it2 = j[0]->nexts.begin();
                 for(auto m : j[0]->nexts){
@@ -246,9 +244,15 @@ void graph::printLA(){
     }
 }
 
-
-bool connexo(){
-
+void graph::filledges(){
+    vector<Edge*> compilado;
+    for (int i = 0; i < LA.size(); ++i) {
+        for (int j = 0; j < LA[i].size(); ++j) {
+            for (int k = 0; k < LA[i][j]->nexts.size(); ++k) {
+                compilado.push_back(LA[i][j]->nexts[k]);
+            }
+        }
+    }
 }
 
 
