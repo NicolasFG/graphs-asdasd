@@ -330,7 +330,11 @@ bool graph::is_bipartite(){
 }
  */
 
-
+bool graph::CheckBoucle(Edge * arista){
+    int temp=arista->origin->Id;
+    int temp2=arista->end->Id;
+    return findArista(temp,temp2)->end->Id==temp;
+}
 
 
 string graph::getKruskal() {
@@ -357,9 +361,11 @@ double pesototal=0;
         }
         cout<<"Orden por algoritmo de Kruskal" << endl;
         for (int k = 0; k < LA.size()-1; ++k) {
+            if(!CheckBoucle(aristas[k])){
             cout << "Paso " << k+1 << ": (" << aristas[k]->origin->Id << "," << aristas[k]->end->Id << ")" << endl;
             pesototal+=aristas[k]->pond;
 
+        } else continue;
         }
         cout << endl <<" El peso total del arbol de minima exapansion es "<<pesototal<<endl;
 
