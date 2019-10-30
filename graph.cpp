@@ -367,16 +367,6 @@ int graph::minKey(vector<int> key, vector<bool> mstSet){
     return min_index;
 }
 
-void graph::printMST(const vector<Edge*> parent){
-
-    cout<<"Edge \tWeight\n";
-    for (unsigned long i = 0; i < parent.size(); i++){
-
-            cout<< parent[i]->origin->Id<< " - " << parent[i]->end->Id<<" \t"<< parent[i]->pond<<" \n";
-    }
-}
-
-
 template <typename T>
 bool is_in(T element, vector <T> place){
     for (T x : place)
@@ -384,23 +374,33 @@ bool is_in(T element, vector <T> place){
     return false;
 }
 
+void graph::printMST(const vector<Edge*> parent){
+
+    cout<<"Edge \tWeight\n";
+    for (auto i : parent){
+
+            cout<<i->origin->Id<<" - "<< i->end->Id<<"\t"<<i->pond<<"\n";
+    }
+}
+
 void graph::primMST(int key){
     vector<Edge*> conexiones;
     vector<Node*> usados;
     auto tempnode=findNode(key);
     usados.push_back(tempnode);
-    int min =  2147483647;
+    double min =  2147483647;
     Edge* minN;
     while(usados.size() < LA.size()) {
-        for (int i = 0; i < usados.size(); ++i) {
-            for (int j = 0; j < usados[i]->nexts.size(); ++j) {
+        for (unsigned long i = 0; i < usados.size(); ++i) {
+            for (unsigned long j = 0; j < usados[i]->nexts.size(); ++j) {
                 if (min > usados[i]->nexts[j]->pond and !is_in(usados[i]->nexts[j]->end, usados)) {
                     min = usados[i]->nexts[j]->pond;
                     minN = usados[i]->nexts[j];
+                    conexiones.push_back(minN);
+                    usados.push_back(minN->end);
                 }
             }
         }
-        usados.push_back(minN->end);
         minN = nullptr;
         min = 2147483647;
     }

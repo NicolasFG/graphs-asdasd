@@ -26,7 +26,7 @@ void trials(){
     G.createConection(4,7, 7);
     G.createConection(7,8, 8);
 
-G.primMST(3);
+    //G.primMST(3);
 
 }
 
