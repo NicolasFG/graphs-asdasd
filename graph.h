@@ -62,7 +62,7 @@ public:
     void printNode(int key);
     void printArista(int OriginKey, int EndKey);
     void printLA();
-
+    bool CheckBoucle(Edge *arista);
     void printAristasByNode();
     int minKey(vector<int> key, vector<bool> mstSet);
     static void printMST( const vector<Edge*>& parent);
@@ -72,6 +72,7 @@ public:
 
     ~graph();
 
+    
 };
 
 
