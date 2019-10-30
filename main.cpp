@@ -5,7 +5,7 @@
 using namespace std;
 
 void trials(){
-    graph G(true);
+    graph G(false);
 
     G.createNodes(0, "LA", 120.0, 20);
     G.createNodes(1, "Lima", 50.0, 30);
@@ -18,17 +18,15 @@ void trials(){
     G.createNodes(8, "NY", 60.0, 130);
 
     G.createConection(0,1, 1);
-    G.createConection(0,2, 1);
-    G.createConection(1,3, 1);
-    G.createConection(1,4, 1);
-    G.createConection(2,5, 1);
-    G.createConection(2,6, 1);
-    G.createConection(4,7, 1);
-    G.createConection(7,8, 1);
+    G.createConection(0,2, 2);
+    G.createConection(2,3,3);
+    G.createConection(1,4, 4);
+    G.createConection(2,5, 5);
+    G.createConection(2,6, 6);
+    G.createConection(4,7, 7);
+    G.createConection(7,8, 8);
 
-    if(G.is_bipartite()) cout << "Es bipartito";
-    else cout << "No es bipartito";
-
+G.primMST();
 
 }
 
