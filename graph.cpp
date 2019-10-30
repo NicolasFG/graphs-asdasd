@@ -282,8 +282,8 @@ unsigned int graph::getNodes() {
     return nodes;
 }
 
-/*
-void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador){
+
+void graph::aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador){
         if (checked[N]) return;
         else if (!checked[N]) return;
         else {
@@ -328,7 +328,7 @@ bool graph::is_bipartite(){
     return true;
 
 }
- */
+
 
 bool graph::CheckBoucle(Edge * arista){
     int temp=arista->origin->Id;
@@ -338,7 +338,7 @@ bool graph::CheckBoucle(Edge * arista){
 
 
 void graph::getKruskal() {
-double pesototal=0;
+    double pesototal=0;
     if (is_directed) {
         cout << "kruskal no funciona para dirigidos" << endl;
     } else {
@@ -362,10 +362,10 @@ double pesototal=0;
         cout<<"Orden por algoritmo de Kruskal" << endl;
         for (int k = 0; k < LA.size()-1; ++k) {
             if(!CheckBoucle(aristas[k])){
-            cout << "Paso " << k+1 << ": (" << aristas[k]->origin->Id << "," << aristas[k]->end->Id << ")" << endl;
-            pesototal+=aristas[k]->pond;
+                cout << "Paso " << k+1 << ": (" << aristas[k]->origin->Id << "," << aristas[k]->end->Id << ")" << endl;
+                pesototal+=aristas[k]->pond;
 
-        } else continue;
+            } else continue;
         }
         cout << endl <<" El peso total del arbol de minima exapansion es "<<pesototal<<endl;
 
@@ -394,7 +394,7 @@ int graph::minKey(vector<int> key, vector<bool> mstSet){
 }
 
 void graph::printMST(const vector<Edge*>& parent){
-double peso=0;
+    double peso=0;
     cout<<"Orden por algoritmo de Prim" << endl;
     for (int k = 0; k < parent.size(); ++k) {
         cout << "Paso " << k+1 << ": (" << parent[k]->origin->Id << "," << parent[k]->end->Id << ")" << endl;
@@ -477,7 +477,8 @@ bool graph::isFuertementeConexo() {
         cout<<"Fuertemente conexo solo funciona con dirigidos"<<endl;
         return false;
     }
-    return true;
+
+
 }
 
 void graph::printAristasByNode() {
