@@ -68,7 +68,7 @@ public:
     static void printMST( const vector<Edge*>& parent);
     void primMST(int key);//TERMINADO
 
-    void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador);
+    static void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador);
 
     ~graph();
 

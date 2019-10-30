@@ -362,10 +362,9 @@ void graph::getKruskal() {
         cout<<"Orden por algoritmo de Kruskal" << endl;
         for (int k = 0; k < LA.size()-1; ++k) {
             if(!CheckBoucle(aristas[k])){
-                cout << "Paso " << k+1 << ": (" << aristas[k]->origin->Id << "," << aristas[k]->end->Id << ")" << endl;
+                cout << "Paso " << k+1 << ": (" << aristas[k]->origin->Name << "," << aristas[k]->end->Name << ")" << endl;
                 pesototal+=aristas[k]->pond;
-
-            } else continue;
+            }
         }
         cout << endl <<" El peso total del arbol de minima exapansion es "<<pesototal<<endl;
 
@@ -397,7 +396,7 @@ void graph::printMST(const vector<Edge*>& parent){
     double peso=0;
     cout<<"Orden por algoritmo de Prim" << endl;
     for (int k = 0; k < parent.size(); ++k) {
-        cout << "Paso " << k+1 << ": (" << parent[k]->origin->Id << "," << parent[k]->end->Id << ")" << endl;
+        cout << "Paso " << k+1 << ": (" << parent[k]->origin->Name << "," << parent[k]->end->Name << ")" << endl;
         peso+=parent[k]->pond;
     }
     cout << endl;
