@@ -66,11 +66,11 @@ public:
     void printLA();
     void deleteGraph();
 
-
+    void printAristasByNode();
     int minKey(vector<int> key, vector<bool> mstSet);
-    static void printMST( vector<Edge*> parent);
+    static void printMST( const vector<Edge*>& parent);
     void primMST(int key);
-    ~graph();
+    //~graph();
 
 
     void aux_bipartite(Node *N, bool prevColor, std::map<Node *, bool> &checked, int &contador);

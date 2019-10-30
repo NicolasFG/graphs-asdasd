@@ -72,7 +72,11 @@ void graph::createConection(int origin, int end) {
                 i.push_back(auxEdge->origin);
             }
         }
-        auxEdge->end->nexts.push_back(auxEdge);
+        auto auxEdge2 = new Edge;
+        auxEdge2->origin = auxEdge->end;
+        auxEdge2->end = auxEdge->origin;
+        auxEdge2->pond = auxEdge->pond;
+        auxEdge->end->nexts.push_back(auxEdge2);
     }
     edges++;
 }
@@ -94,7 +98,11 @@ void graph::createConection(int origin, int end, double pond) {
                 i.push_back(auxEdge->origin);
             }
         }
-        auxEdge->end->nexts.push_back(auxEdge);
+        auto auxEdge2 = new Edge;
+        auxEdge2->origin = auxEdge->end;
+        auxEdge2->end = auxEdge->origin;
+        auxEdge2->pond = auxEdge->pond;
+        auxEdge->end->nexts.push_back(auxEdge2);
     }
     edges++;
 }
@@ -345,13 +353,20 @@ string graph::getKruskal() {
                 }
             }
         }
+        cout<<"Orden por algoritmo de Kruskal" << endl;
         for (int k = 0; k < LA.size()-1; ++k) {
-            cout << "Paso " << k << ": (" << aristas[k]->origin->Id << "," << aristas[k]->end->Id << ")" << endl;
+            cout << "Paso " << k+1 << ": (" << aristas[k]->origin->Id << "," << aristas[k]->end->Id << ")" << endl;
         }
+        cout << endl;
     }
 }
 
-
+template <typename T>
+bool is_in(T element, vector <T> place){
+    for (T x : place)
+        if(element == x) return true;
+    return false;
+}
 
 //Pruebas Prim
 int graph::minKey(vector<int> key, vector<bool> mstSet){
@@ -367,44 +382,43 @@ int graph::minKey(vector<int> key, vector<bool> mstSet){
     return min_index;
 }
 
-template <typename T>
-bool is_in(T element, vector <T> place){
-    for (T x : place)
-        if(element == x) return true;
-    return false;
-}
+void graph::printMST(const vector<Edge*>& parent){
 
-void graph::printMST(const vector<Edge*> parent){
-
-    cout<<"Edge \tWeight\n";
-    for (auto i : parent){
-
-            cout<<i->origin->Id<<" - "<< i->end->Id<<"\t"<<i->pond<<"\n";
+    cout<<"Orden por algoritmo de Prim" << endl;
+    for (int k = 0; k < parent.size(); ++k) {
+        cout << "Paso " << k+1 << ": (" << parent[k]->origin->Id << "," << parent[k]->end->Id << ")" << endl;
     }
+    cout << endl;
 }
 
-void graph::primMST(int key){
-    vector<Edge*> conexiones;
-    vector<Node*> usados;
-    auto tempnode=findNode(key);
-    usados.push_back(tempnode);
-    double min =  2147483647;
-    Edge* minN;
-    while(usados.size() < LA.size()) {
-        for (unsigned long i = 0; i < usados.size(); ++i) {
-            for (unsigned long j = 0; j < usados[i]->nexts.size(); ++j) {
-                if (min > usados[i]->nexts[j]->pond and !is_in(usados[i]->nexts[j]->end, usados)) {
-                    min = usados[i]->nexts[j]->pond;
-                    minN = usados[i]->nexts[j];
-                    conexiones.push_back(minN);
-                    usados.push_back(minN->end);
+void graph::primMST(int key) {
+    if (is_directed) {
+        cout << "kruskal no funciona para dirigidos" << endl;
+    } else {
+        vector<Edge *> conexiones;
+        vector<Node *> usados;
+        auto tempnode = findNode(key);
+        usados.push_back(tempnode);
+        double min = 2147483647;
+        Edge *minN = nullptr;
+        while (usados.size() < LA.size() and isConexo()) {
+            for (unsigned long i = 0; i < usados.size(); ++i) {
+                for (unsigned long j = 0; j < usados[i]->nexts.size(); ++j) {
+                    if (min > usados[i]->nexts[j]->pond and !is_in(usados[i]->nexts[j]->end, usados)) {
+                        min = usados[i]->nexts[j]->pond;
+                        minN = usados[i]->nexts[j];
+                    }
                 }
             }
+            if (min != 2147483647) {
+                conexiones.push_back(minN);
+                usados.push_back(minN->end);
+                minN = nullptr;
+                min = 2147483647;
+            }
         }
-        minN = nullptr;
-        min = 2147483647;
+        printMST(conexiones);
     }
-    printMST(conexiones);
 }
 
 
@@ -450,6 +464,18 @@ bool graph::isFuertementeConexo() {
     }
 }
 
+void graph::printAristasByNode() {
+    for (auto x : LA){
+        cout << "En el nodo " << x[0]->Id << " existen : ";
+        for (auto y : x[0]->nexts){
+            cout << y->origin->Id << " - " << y->end->Id << " pond(" << y->pond << ") | ";
+        }
+        cout << endl;
+
+    }
+}
+
+/*
 void graph::deleteGraph() {
 
     for (auto & i : LA) {
@@ -462,3 +488,4 @@ void graph::deleteGraph() {
  graph::~graph() {
     deleteGraph();
 }
+*/
