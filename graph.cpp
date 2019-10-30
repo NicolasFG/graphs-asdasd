@@ -337,7 +337,7 @@ bool graph::CheckBoucle(Edge * arista){
 }
 
 
-string graph::getKruskal() {
+void graph::getKruskal() {
 double pesototal=0;
     if (is_directed) {
         cout << "kruskal no funciona para dirigidos" << endl;
@@ -474,6 +474,7 @@ bool graph::isFuertementeConexo() {
         cout<<"Fuertemente conexo solo funciona con dirigidos"<<endl;
         return false;
     }
+    return true;
 }
 
 void graph::printAristasByNode() {
@@ -490,7 +491,7 @@ void graph::printAristasByNode() {
 
 
 graph::~graph() {
-    for (auto & i : LA) {
-        removeNode(i[0]->Id);
+    for (int i=0;i<LA.size();++i) {
+        removeNode(LA[i][0]->Id);
     }
 }

@@ -55,7 +55,7 @@ public:
     void fillvectordiscovered(map<Node*, bool*> & key);
     vector<Edge*> filledges();
 
-    string getKruskal();// TERMINADO
+    void getKruskal();// TERMINADO
 
     int getNodeIdByName(const string& Name);
     double calculatedistance(int key1, int key2);
