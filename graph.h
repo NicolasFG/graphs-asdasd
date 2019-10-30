@@ -50,8 +50,9 @@ public:
     string denseOrDispersed(double cota); //TERMINADO
     bool isConexo();
     bool isFuertementeConexo();
-    static bool is_bipartite(graph G,int n,vector<bool>& discovered,vector<int>& color);
-    static vector<bool> fillvectordiscovered(graph G,vector<bool> vector);
+    bool is_bipartite();
+    bool aux_bipartite(int n, vector<bool> &discovered, vector <int> &color);
+    vector<bool> fillvectordiscovered();
     vector<Edge*> filledges();
 
 

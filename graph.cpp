@@ -272,26 +272,32 @@ unsigned int graph::getNodes() {
 }
 
 
-vector<bool> graph::fillvectordiscovered(graph G,vector<bool> vector) {
-    for (int i = 0; i <= G.LA.size(); ++i) {
+vector<bool> graph::fillvectordiscovered() {
+    vector<bool> vector;
+    for (int i = 0; i <= LA.size(); ++i) {
 
-        for (int j = 0; j <G.LA.size(); ++j) {
+        for (int j = 0; j <LA.size(); ++j) {
             vector.push_back(false);
         }
         }
     return vector;}
 
 
-bool graph::is_bipartite(graph G,int n,vector<bool> &discovered,vector <int> &color){
+bool graph::is_bipartite(){
+    vector <bool> dis = fillvectordiscovered();
+    vector <int> color;
+    color.push_back(0);
+    return aux_bipartite(0, dis, color);
+}
 
+bool graph::aux_bipartite(int n, vector<bool> &discovered, vector <int> &color){
+    for (int i = 0; i <= LA.size(); ++i) {
 
-    for (int i = 0; i <= G.LA.size(); ++i) {
-
-        for (int j = 1; j < G.LA[i].size(); ++j) {
+        for (int j = 1; j < LA[i].size(); ++j) {
             if (discovered[j] == false) {
                 discovered[j] = true;
                 color[n] = !color[j];
-               bool a=is_bipartite(G,j,discovered,color);
+               bool a=aux_bipartite(j,discovered,color);
                if(!a){
                    return false;
                }
