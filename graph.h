@@ -26,25 +26,25 @@ struct Node{
 
 class graph {
 private:
-    unsigned int nodes,edges{};
+    unsigned int nodes,edges;
     bool is_directed;
     vector<vector<Node*>> LA;
 
 public:
     explicit graph(bool isdirected);
 
-    void createNodes(int _id, const string& _name, double _la, double _lo);
-    void createNodes(int _id, const string&  _name, double _la, double _lo, double _pond);
-    void createConection(int origin, int end);
-    void createConection(int origin, int end, double pond);
-    void removeNode(int _id);
-    void removeConnection(int OriginKey, int EndKey);
+    void createNodes(int _id, const string& _name, double _la, double _lo); //TERMINADO
+    void createNodes(int _id, const string&  _name, double _la, double _lo, double _pond); //TERMINADO
+    void createConection(int origin, int end); //TERMINADO
+    void createConection(int origin, int end, double pond); //TERMINADO
+    void removeNode(int _id); //TERMINADO
+    void removeConnection(int OriginKey, int EndKey); //TERMINADO
 
-    Node* findNode(int key);
-    Edge* findArista(int OriginKey, int EndKey);
+    Node* findNode(int key); //TERMINADO
+    Edge* findArista(int OriginKey, int EndKey); //TERMINADO
 
-    double calculateDensity();  
-    static string denseOrDispersed(double densidad, double cota);
+    double calculateDensity();   //TERMINADO
+    string denseOrDispersed(double cota); //TERMINADO
     bool isConexo();
     bool isFuertementeConexo();
     bool is_bipartite(graph G,int n);

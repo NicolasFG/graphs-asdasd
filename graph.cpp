@@ -139,7 +139,8 @@ double graph::calculateDensity() {
     return densidad;
 }
 
-string graph::denseOrDispersed(double densidad, double cota){
+string graph::denseOrDispersed(double cota){
+    double densidad = calculateDensity();
     if(densidad >= cota){
         return "Es denso";
     }
@@ -160,11 +161,12 @@ void graph::printArista(int OriginKey, int EndKey) {
     if(temporal){
         cout
                 << "Origen : " << temporal->origin->Name
-                << " - Destino : " << temporal->end->Name
+                << " - Destino : " << temporal->end->Name;
+        if (!is_directed) cout << " y viceversa ";
+        cout
                 << " - Distancia : " << temporal->pond
                 << endl;
     }
-
     else {
         cout << "No se encontró lo que buscaba. " << endl;
     }
@@ -199,25 +201,26 @@ void graph::removeNode(int _id) {
     for (auto i : temp->nexts){
         removeConnection(i->origin->Id, i->end->Id);
     }
-    //Borrar todos los edges que llegan al NODO y su rastro en la lista de adyacencia LA
-    for (auto j : LA){
-        auto it1 = j.begin();
-        //++it1;
-        for (auto k : j) {
-            cout << k->Name << endl;
-            if (k== temp){
-                auto it2 = j[0]->nexts.begin();
-                for(auto m : j[0]->nexts){
-                    if (m->end == temp){
-                        j[0]->nexts.erase(it2);
-                        break;
+    //Borrar todos los edges que llegan al NODO y su rastro en la lista de adyacencia LA si el grafo es dirigido
+    if(is_directed) {
+        for (auto j : LA) {
+            auto it1 = j.begin();
+            for (auto k : j) {
+                //cout << k->Name << endl;
+                if (k == temp) {
+                    auto it2 = j[0]->nexts.begin();
+                    for (auto m : j[0]->nexts) {
+                        if (m->end == temp) {
+                            j[0]->nexts.erase(it2);
+                            break;
+                        }
+                        ++it2;
                     }
-                    ++it2;
+                    j.erase(it1);
+                    break;
                 }
-                j.erase(it1);
-                break;
+                ++it1;
             }
-            ++it1;
         }
     }
 
@@ -237,18 +240,63 @@ void graph::removeNode(int _id) {
 }
 
 void graph::printLA(){
+    cout << "Lista de adyacencia de un grafo ";
+    if (!is_directed) cout << "no ";
+    cout << "dirigido:" << endl;
+    for (int i = 0; i < 50; ++i) cout << "=";
+    cout << endl;
     for (auto & x : LA){
-        cout << x.size() << " = ";
         for (auto & y : x){
             cout << y->Name << " - " << y->Id << " | ";
         }
+        cout << " => Numero de conexiones : " << x.size()-1 ;
         cout << endl;
     }
 }
 
+template <typename T>
+bool is_in(T element, vector <T> place){
+    for (T x : place)
+        if(element == x) return true;
+    return false;
+}
 
-bool connexo(){
 
+
+bool graph::isConexo(){
+    int expectedSize = LA.size();
+    vector<Node*> ready;
+    for(auto x : LA[0]) {
+        ready.push_back(x);
+        if(ready.size() == expectedSize){
+            return true;
+        }
+    }
+    for (int y = 0; y < LA.size(); ++y) {
+        for (int i = 1; i < expectedSize; ++i) {
+            if (is_in(LA[i][0], ready)) {
+                for (int j = 1; j < LA[i].size(); ++j) {
+                    if (!is_in<Node*>(LA[i][j], ready)) {
+                        ready.push_back(LA[i][j]);
+                        if (ready.size() == expectedSize) {
+                            return true;
+                        }
+                    }
+                }
+            } else {
+                for (int j = 1; j < LA[i].size(); ++j) {
+                    if (is_in<Node*>(LA[i][j], ready)) {
+                        ready.push_back(LA[i][0]);
+                        if (ready.size() == expectedSize) {
+                            return true;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    return false;
 }
 
 

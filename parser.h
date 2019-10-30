@@ -119,6 +119,8 @@ void createjsonnodes(){
             cout<<"El nodo: "<<tempnodeorigin<<", tiene coneccion con el nodo: "<<temp<<endl;
         }
     }
+    G.printLA();
+    //cout << G.isConexo();
 
 }
 
