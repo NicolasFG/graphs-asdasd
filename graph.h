@@ -64,11 +64,13 @@ public:
     void printNode(int key);
     void printArista(int OriginKey, int EndKey);
     void printLA();
+    void deleteGraph();
 
 
     int minKey(vector<int> key, vector<bool> mstSet);
-    void printMST(const vector<int>& parent);
+    void printMST( vector<int> parent);
     void primMST();
+    ~graph();
 
 
 
