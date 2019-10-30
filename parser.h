@@ -122,7 +122,7 @@ void createjsonnodes(){
     G.printLA();
     //cout << G.isConexo();
 
-    G.primMST();
+    //G.primMST();
 
 }
 

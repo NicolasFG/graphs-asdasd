@@ -68,8 +68,8 @@ public:
 
 
     int minKey(vector<int> key, vector<bool> mstSet);
-    void printMST( vector<int> parent);
-    void primMST();
+    void printMST( vector<Edge*> parent);
+    void primMST(int key);
     ~graph();
 
 

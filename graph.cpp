@@ -274,15 +274,7 @@ unsigned int graph::getNodes() {
     return nodes;
 }
 
-
-void graph::fillvectordiscovered(map<int, bool*> & key) {
-
-    for (auto i : LA) {
-        bool* x = nullptr;
-        key.insert(pair<int, bool>(3, true));
-    }
-}
-
+/*
 void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador){
         if (checked[N]) return;
         else if (!checked[N]) return;
@@ -294,6 +286,7 @@ void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &conta
             }
         }
 }
+
 
 
 bool graph::is_bipartite(){
@@ -327,6 +320,7 @@ bool graph::is_bipartite(){
     return true;
 
 }
+ */
 
 
 string graph::getKruskal() {
@@ -373,21 +367,16 @@ int graph::minKey(vector<int> key, vector<bool> mstSet){
     return min_index;
 }
 
-void graph::printMST(const vector<int> parent){
+void graph::printMST(const vector<Edge*> parent){
 
     cout<<"Edge \tWeight\n";
-    for (unsigned long i = 0; i < LA.size(); i++){
-        for (int j = 0; j <LA[i].size()-1 ; ++j) {
+    for (unsigned long i = 0; i < parent.size(); i++){
 
-            cout<<LA[i][0]->Id<<" - "<<LA[i][j+1]->Id<<" \t"<<findArista(LA[i][0]->Id,LA[i][j+1]->Id)->pond<<" \n";
-
-        }
-
-    }
-    for (int j = 0; j <parent.size() ; ++j) {
-        cout<<parent[j]<<endl;
+            cout<< parent[i]->origin->Id<< " - " << parent[i]->end->Id<<" \t"<< parent[i]->pond<<" \n";
     }
 }
+
+
 template <typename T>
 bool is_in(T element, vector <T> place){
     for (T x : place)
@@ -395,36 +384,27 @@ bool is_in(T element, vector <T> place){
     return false;
 }
 
-void graph::primMST(){
-    vector<int> parent;
-    vector<int> key;
-    vector<bool> mstSet;
-
-    for (unsigned long i = 0; i < LA.size(); ++i){
-        key.push_back(2147483647);
-        mstSet.push_back(false);
-    }
-    key[0] = 0;
-    parent.push_back(-1);
-
-    for (unsigned long j = 0; j < LA.size() - 1; ++j){
-        int u = minKey(key, mstSet);
-        mstSet[u] = true;
-
-        for (unsigned long k = 1; k < LA[j].size()-1; ++k) {
-            cout<<LA[u][k]->Id<<endl;
-            int temp1=LA[u][k]->Id;
-
-            if (temp1!=0 && !mstSet[k] and temp1 < key[k]){
-                parent.push_back(u);
-                key[k]=temp1;
-
+void graph::primMST(int key){
+    vector<Edge*> conexiones;
+    vector<Node*> usados;
+    auto tempnode=findNode(key);
+    usados.push_back(tempnode);
+    int min =  2147483647;
+    Edge* minN;
+    while(usados.size() < LA.size()) {
+        for (int i = 0; i < usados.size(); ++i) {
+            for (int j = 0; j < usados[i]->nexts.size(); ++j) {
+                if (min > usados[i]->nexts[j]->pond and !is_in(usados[i]->nexts[j]->end, usados)) {
+                    min = usados[i]->nexts[j]->pond;
+                    minN = usados[i]->nexts[j];
+                }
             }
         }
-
+        usados.push_back(minN->end);
+        minN = nullptr;
+        min = 2147483647;
     }
-
-    printMST(parent);
+    printMST(conexiones);
 }
 
 
@@ -468,10 +448,6 @@ bool graph::isFuertementeConexo() {
     if(!is_directed){
         cout<<"Fuertemente conexo solo funciona con dirigidos"<<endl;
     }
-
-
-
-
 }
 
 void graph::deleteGraph() {
