@@ -32,8 +32,9 @@ void trials(){
     cout << endl;
     G.printAristasByNode();
     cout << endl;
-    G.getKruskal();
     G.primMST(3);
+    G.getKruskal();
+    
 
 
 }
