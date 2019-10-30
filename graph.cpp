@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include "graph.h"
+#include <map>
 
 graph::graph(bool directed) {
     nodes = 0;
@@ -274,45 +275,57 @@ unsigned int graph::getNodes() {
 }
 
 
-vector<bool> graph::fillvectordiscovered() {
-    vector<bool> vector;
-    for (int i = 0; i < LA.size(); ++i) {
+void graph::fillvectordiscovered(map<int, bool*> & key) {
 
-            vector.push_back(false);
-
+    for (auto i : LA) {
+        bool* x = nullptr;
+        key.insert(pair<int, bool>(3, true));
     }
-    return vector;
+}
+
+void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador){
+        if (checked[N]) return;
+        else if (!checked[N]) return;
+        else {
+            checked[N] = !prevColor;
+            ++contador;
+            for (auto x : N->nexts){
+                aux_bipartite(x->end,prevColor,checked,contador);
+            }
+        }
 }
 
 
 bool graph::is_bipartite(){
-    vector <bool> dis = fillvectordiscovered();
-    vector <int> color;
-    color.push_back(0);
-    return aux_bipartite(0, dis, color);
-}
-
-bool graph::aux_bipartite(int n, vector<bool> &discovered, vector <int> &color){
-
-    for (int i = 0; i <= LA.size(); ++i) {
-
-        for (int j = 0; j < LA[i].size()-1; ++j) {
-
-            if (discovered[j] == false) {
-                discovered[j] = true;
-                cout<<color[n]<<" "<<color[j]<<endl;
-                color[n] = !color[j];
-                cout<<color[n]<<" "<<color[j]<<endl;
-
-                if(!aux_bipartite(j,discovered,color)){
-                    cout<<color[j]<<" "<<color[n]<<endl;
-                    return false;
-                }
-            } else return color[j] != color[n];
-
+    int contador=0;
+    map<Node*,bool> checked;
+    for (auto & i : LA){
+        if(checked[i[0]]){
+            for (auto j : i[0]->nexts){
+                aux_bipartite(j->end, true, checked, contador);
+            }
+        } else if (!checked[i[0]]){
+            for (auto j : i[0]->nexts){
+                aux_bipartite(j->end, false, checked, contador);
+            }
+        } else {
+            checked[i[0]] = true;
+            ++contador;
+            for (auto j : i[0]->nexts){
+                aux_bipartite(j->end, false, checked, contador);
+            }
+        }
+        if (contador >=LA.size()) break;
+    }
+    for (auto i : LA){
+        for (int j = 1; j < i.size(); ++j) {
+            if (checked[i[0]] == checked[i[j]]){
+                return false;
+            }
         }
     }
     return true;
+
 }
 
 

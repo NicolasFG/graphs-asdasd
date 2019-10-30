@@ -2,6 +2,7 @@
 #define GRAPHS_ASDASD_GRAPH_H
 
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -51,8 +52,7 @@ public:
     bool isConexo();
     bool isFuertementeConexo();
     bool is_bipartite();
-    bool aux_bipartite(int n, vector<bool> &discovered, vector <int> &color);
-    vector<bool> fillvectordiscovered();
+    void fillvectordiscovered(map<Node*, bool*> & key);
     vector<Edge*> filledges();
 
 
@@ -73,9 +73,7 @@ public:
     ~graph();
 
 
-
-
-
+    void aux_bipartite(Node *N, bool prevColor, std::map<Node *, bool> &checked, int &contador);
 };
 
 
