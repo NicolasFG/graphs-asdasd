@@ -6,6 +6,7 @@
 
 graph::graph(bool directed) {
     nodes = 0;
+    edges = 0;
     is_directed = directed;
 }
 
@@ -390,6 +391,15 @@ void graph::primMST(){
             int temp2=LA[u][k]->Id;
             double temp3=findArista(temp1,temp2)->pond;
 
+            if (temp3!=0 && !mstSet[k] and temp3 < key[k]){
+                parent.push_back(LA[u][0]->Id);
+                key.push_back(temp3);
+            }
+        }
+    }
+    printMST(parent);
+}
+
 bool graph::isConexo(){
     int expectedSize = LA.size();
     vector<Node*> ready;
@@ -424,14 +434,5 @@ bool graph::isConexo(){
         }
     }
     return false;
-}
-
-            if (temp3!=0 && !mstSet[k] and temp3 < key[k]){
-                parent.push_back(LA[u][0]->Id);
-                key.push_back(temp3);
-            }
-        }
-    }
-    printMST(parent);
 }
 
