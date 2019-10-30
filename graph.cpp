@@ -331,8 +331,10 @@ bool graph::is_bipartite(){
  */
 
 
-string graph::getKruskal() {
 
+
+string graph::getKruskal() {
+double pesototal=0;
     if (is_directed) {
         cout << "kruskal no funciona para dirigidos" << endl;
     } else {
@@ -356,8 +358,11 @@ string graph::getKruskal() {
         cout<<"Orden por algoritmo de Kruskal" << endl;
         for (int k = 0; k < LA.size()-1; ++k) {
             cout << "Paso " << k+1 << ": (" << aristas[k]->origin->Id << "," << aristas[k]->end->Id << ")" << endl;
+            pesototal+=aristas[k]->pond;
+
         }
-        cout << endl;
+        cout << endl <<" El peso total del arbol de minima exapansion es "<<pesototal<<endl;
+
     }
 }
 
@@ -478,8 +483,8 @@ void graph::printAristasByNode() {
 
 
 
- graph::~graph() {
-     for (auto & i : LA) {
-         removeNode(i[0]->Id);
-     }
+graph::~graph() {
+    for (auto & i : LA) {
+        removeNode(i[0]->Id);
+    }
 }
