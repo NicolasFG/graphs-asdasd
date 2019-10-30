@@ -461,6 +461,7 @@ bool graph::isConexo(){
 bool graph::isFuertementeConexo() {
     if(!is_directed){
         cout<<"Fuertemente conexo solo funciona con dirigidos"<<endl;
+        return false;
     }
 }
 
@@ -475,17 +476,10 @@ void graph::printAristasByNode() {
     }
 }
 
-/*
-void graph::deleteGraph() {
 
-    for (auto & i : LA) {
-        removeNode(i[0]->Id);
-    }
-
-
-}
 
  graph::~graph() {
-    deleteGraph();
+     for (auto & i : LA) {
+         removeNode(i[0]->Id);
+     }
 }
-*/

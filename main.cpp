@@ -5,7 +5,7 @@
 using namespace std;
 
 void trials(){
-    graph G(false);
+    graph G(true);
 
     G.createNodes(0, "A", 120.0, 20);
     G.createNodes(1, "B", 50.0, 30);
@@ -17,7 +17,7 @@ void trials(){
     G.createNodes(7, "H", 60.0, 130);
 
     G.createConection(0,1, 12);
-    G.createConection(0,4, 5);
+    G.createConection(0,4, 5.7);
     G.createConection(1,2, 2);
     G.createConection(1,3, 8);
     G.createConection(2,6, 10);

@@ -49,31 +49,29 @@ public:
 
     double calculateDensity();   //TERMINADO
     string denseOrDispersed(double cota); //TERMINADO
-    bool isConexo();
+    bool isConexo(); //TERMINADO MEJORABLE
     bool isFuertementeConexo();
     bool is_bipartite();
     void fillvectordiscovered(map<Node*, bool*> & key);
     vector<Edge*> filledges();
 
-
-    string getKruskal();
-
+    string getKruskal();// TERMINADO
 
     int getNodeIdByName(const string& Name);
     double calculatedistance(int key1, int key2);
     void printNode(int key);
     void printArista(int OriginKey, int EndKey);
     void printLA();
-    void deleteGraph();
 
     void printAristasByNode();
     int minKey(vector<int> key, vector<bool> mstSet);
     static void printMST( const vector<Edge*>& parent);
-    void primMST(int key);
-    //~graph();
-
+    void primMST(int key);//TERMINADO
 
     void aux_bipartite(Node *N, bool prevColor, std::map<Node *, bool> &checked, int &contador);
+
+    ~graph();
+
 };
 
 
