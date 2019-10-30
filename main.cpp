@@ -28,13 +28,18 @@ void trials(){
 
     if (G.isConexo()) cout << "Es conexo" << endl<< endl;
     else cout << "No es conexo" << endl<< endl;
-    G.printLA();
+
+
+    if (G.is_bipartite()) cout << "Es bipartito" << endl<< endl;
+    else cout << "No es bipartito" << endl<< endl;
+    //G.printLA();
+
     cout << endl;
     G.printAristasByNode();
     cout << endl;
     G.primMST(3);
     G.getKruskal();
-    
+
 
 
 }
@@ -47,3 +52,4 @@ int main(){
 
     return 0;
 }
+
