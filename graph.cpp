@@ -394,12 +394,15 @@ int graph::minKey(vector<int> key, vector<bool> mstSet){
 }
 
 void graph::printMST(const vector<Edge*>& parent){
-
+double peso=0;
     cout<<"Orden por algoritmo de Prim" << endl;
     for (int k = 0; k < parent.size(); ++k) {
         cout << "Paso " << k+1 << ": (" << parent[k]->origin->Id << "," << parent[k]->end->Id << ")" << endl;
+        peso+=parent[k]->pond;
     }
     cout << endl;
+    cout<<"El peso total del arbol de minima expansion es "<<peso<<endl;
+    cout<<endl;
 }
 
 void graph::primMST(int key) {
