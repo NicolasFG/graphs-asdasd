@@ -92,7 +92,7 @@ void fillin(){
 }
 
 void createjsonnodes(){
-    ifstream filename("../airports.json");
+    ifstream filename("/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/airports.json");
     nlohmann::json jvalues = nlohmann::json::parse(filename);
     graph G = graph(true);
 
@@ -121,6 +121,8 @@ void createjsonnodes(){
     }
     G.printLA();
     //cout << G.isConexo();
+
+    G.primMST();
 
 }
 

@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 #include "graph.h"
 
 graph::graph(bool directed) {
@@ -167,6 +168,7 @@ void graph::printArista(int OriginKey, int EndKey) {
                 << " - Distancia : " << temporal->pond
                 << endl;
     }
+
     else {
         cout << "No se encontró lo que buscaba. " << endl;
     }
@@ -206,7 +208,6 @@ void graph::removeNode(int _id) {
         for (auto j : LA) {
             auto it1 = j.begin();
             for (auto k : j) {
-                //cout << k->Name << endl;
                 if (k == temp) {
                     auto it2 = j[0]->nexts.begin();
                     for (auto m : j[0]->nexts) {
@@ -246,6 +247,7 @@ void graph::printLA(){
     for (int i = 0; i < 50; ++i) cout << "=";
     cout << endl;
     for (auto & x : LA){
+        cout << x.size() << " = ";
         for (auto & y : x){
             cout << y->Name << " - " << y->Id << " | ";
         }
@@ -254,6 +256,112 @@ void graph::printLA(){
     }
 }
 
+vector<Edge*> graph::filledges(){
+    vector<Edge*> compilado;
+    for (auto & i : LA) {
+        for (auto & j : i) {
+            for (auto next : j->nexts) {
+                compilado.push_back(next);
+            }
+        }
+    }
+}
+unsigned int graph::getNodes() {
+    return nodes;
+}
+
+
+vector<bool> graph::fillvectordiscovered(graph G,vector<bool> vector) {
+    for (int i = 0; i <= G.LA.size(); ++i) {
+
+        for (int j = 0; j <G.LA.size(); ++j) {
+            vector.push_back(false);
+        }
+        }
+    return vector;}
+
+
+bool graph::is_bipartite(graph G,int n,vector<bool> &discovered,vector <int> &color){
+
+
+    for (int i = 0; i <= G.LA.size(); ++i) {
+
+        for (int j = 1; j < G.LA[i].size(); ++j) {
+            if (discovered[j] == false) {
+                discovered[j] = true;
+                color[n] = !color[j];
+               bool a=is_bipartite(G,j,discovered,color);
+               if(!a){
+                   return false;
+               }
+            } else return color[j] != color[n];
+
+        }
+    }
+    return true;
+}
+
+
+string graph::getKruskal() {
+
+    if (is_directed) {
+        cout << "kruskal no funciona para dirigidos" << endl;
+    } else {
+        vector<double> pesos;
+        vector<Edge *> aristas;
+        aristas = filledges();
+
+        for (int i = 0; i <= LA.size(); ++i) {
+
+            for (int j = 0; j < LA[i].size(); ++j) {
+                pesos.push_back(aristas[j]->pond);
+                cout << pesos[j] << endl;
+            }
+        }
+
+        sort(pesos.begin(), pesos.end());
+
+        for (int i = 0; i <= LA.size(); ++i) {
+
+            for (int j = 0; j < LA.size(); ++j) {
+                if (pesos[i] == aristas[j]->pond) {
+                    aristas[i] = aristas[j];
+                }
+            }
+        }
+        for (int k = 1; k < 10; ++k) {
+
+            cout << "Paso " << k << ": (" << aristas[k]->origin->Name << "," << aristas[k]->end->Name << ")" << endl;
+
+        }
+
+
+    }
+
+}
+
+
+
+//Pruebas Prim
+int graph::minKey(vector<int> key, vector<bool> mstSet){
+    int min =  2147483647;
+    //Deberia ser int, pero como lo igualo a i, que es un unsigned long por lo que es el iterador del vector
+    auto min_index = 0;
+    for (unsigned long i = 0; i < LA.size(); ++i) {
+        if (!mstSet[i] and key[i] < min){
+            min = key[i];
+            min_index = i;
+        }
+    }
+    return min_index;
+}
+
+void graph::printMST(const vector<int>& parent){
+    cout<<"Edge \tWeight\n";
+    for (unsigned long i = 1; i < LA.size(); i++){
+        cout<<parent[i]<<" - "<<LA[i][parent[i]]->Id<<" \t"<<findArista(parent[i],LA[i][parent[i]]->Id)->pond<<" \n";
+    }
+}
 template <typename T>
 bool is_in(T element, vector <T> place){
     for (T x : place)
@@ -261,7 +369,26 @@ bool is_in(T element, vector <T> place){
     return false;
 }
 
+void graph::primMST(){
+    vector<int> parent;
+    vector<int> key;
+    vector<bool> mstSet;
 
+    for (unsigned long i = 0; i < LA.size(); ++i){
+        key.push_back(2147483647);
+        mstSet.push_back(false);
+    }
+    key[0] = 0;
+    parent.push_back(-1);
+
+    for (unsigned long j = 0; j < LA.size() - 1; ++j){
+        int u = minKey(key, mstSet);
+        mstSet[u] = true;
+
+        for (unsigned long k = 1; k < LA[u].size()-1; ++k) {
+            int temp1=LA[u][0]->Id;
+            int temp2=LA[u][k]->Id;
+            double temp3=findArista(temp1,temp2)->pond;
 
 bool graph::isConexo(){
     int expectedSize = LA.size();
@@ -299,4 +426,12 @@ bool graph::isConexo(){
     return false;
 }
 
+            if (temp3!=0 && !mstSet[k] and temp3 < key[k]){
+                parent.push_back(LA[u][0]->Id);
+                key.push_back(temp3);
+            }
+        }
+    }
+    printMST(parent);
+}
 

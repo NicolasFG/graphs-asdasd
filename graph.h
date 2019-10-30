@@ -33,12 +33,15 @@ private:
 public:
     explicit graph(bool isdirected);
 
-    void createNodes(int _id, const string& _name, double _la, double _lo); //TERMINADO
-    void createNodes(int _id, const string&  _name, double _la, double _lo, double _pond); //TERMINADO
-    void createConection(int origin, int end); //TERMINADO
-    void createConection(int origin, int end, double pond); //TERMINADO
-    void removeNode(int _id); //TERMINADO
-    void removeConnection(int OriginKey, int EndKey); //TERMINADO
+    void createNodes(int _id, const string& _name, double _la, double _lo);
+    void createNodes(int _id, const string&  _name, double _la, double _lo, double _pond);
+    void createConection(int origin, int end);
+    void createConection(int origin, int end, double pond);
+    void removeNode(int _id);
+
+    void removeConnection(int OriginKey, int EndKey);
+    unsigned int getNodes();
+
 
     Node* findNode(int key); //TERMINADO
     Edge* findArista(int OriginKey, int EndKey); //TERMINADO
@@ -47,16 +50,27 @@ public:
     string denseOrDispersed(double cota); //TERMINADO
     bool isConexo();
     bool isFuertementeConexo();
-    bool is_bipartite(graph G,int n);
+    static bool is_bipartite(graph G,int n,vector<bool>& discovered,vector<int>& color);
+    static vector<bool> fillvectordiscovered(graph G,vector<bool> vector);
+    vector<Edge*> filledges();
 
-    string getPrim();
+
     string getKruskal();
+
 
     int getNodeIdByName(const string& Name);
     double calculatedistance(int key1, int key2);
     void printNode(int key);
     void printArista(int OriginKey, int EndKey);
     void printLA();
+
+
+    int minKey(vector<int> key, vector<bool> mstSet);
+    void printMST(const vector<int>& parent);
+    void primMST();
+
+
+
 
 
 };
