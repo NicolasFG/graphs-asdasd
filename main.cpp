@@ -60,8 +60,8 @@ void trials(){
 
 int main(){
     //fillin();
-    //createjsonnodes();
-    trials();
+    createjsonnodes();
+    //trials();
 
     return 0;
 }

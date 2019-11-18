@@ -378,7 +378,6 @@ bool is_in(T element, vector <T> place){
     return false;
 }
 
-//Pruebas Prim
 int graph::minKey(vector<int> key, vector<bool> mstSet){
     int min =  2147483647;
     //Deberia ser int, pero como lo igualo a i, que es un unsigned long por lo que es el iterador del vector
@@ -406,7 +405,7 @@ void graph::printMST(const vector<Edge*>& parent){
 
 void graph::primMST(int key) {
     if (is_directed) {
-        cout << "kruskal no funciona para dirigidos" << endl;
+        cout << "Prim no funciona para dirigidos" << endl;
     } else {
         vector<Edge *> conexiones;
         vector<Node *> usados;
@@ -476,8 +475,7 @@ bool graph::isFuertementeConexo() {
         cout<<"Fuertemente conexo solo funciona con dirigidos"<<endl;
         return false;
     }
-
-
+    return true;
 }
 
 void graph::printAristasByNode() {

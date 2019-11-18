@@ -6,11 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.cpp
+string
+-
+iostream
+-
+cmath
+-
+algorithm
+-
 vector
 -
+graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
+map
+-
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/json.hpp
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
+vector
+-
+map
+-
+
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/json.hpp
 algorithm
 -
 cassert
@@ -344,23 +362,23 @@ limits
 type_traits
 -
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/main.cpp
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/main.cpp
 iostream
 -
 parser.h
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/parser.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/parser.h
 graph.h
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
 
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/parser.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/parser.h
 iostream
 -
 cstdlib
 -
 graph.h
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/graph.h
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
 json.hpp
-/home/alonso/Documentos/Ciclo_4/Alg&DataStructure/graphs-asdasd/json.hpp
+/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/json.hpp
 fstream
 -
 cstdio
