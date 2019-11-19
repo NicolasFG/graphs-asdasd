@@ -205,6 +205,7 @@ void graph::removeConnection(int OriginKey, int EndKey) {
             }
         }
     }
+    temp = nullptr;
     delete temp;
 }
 
@@ -212,7 +213,13 @@ void graph::removeNode(int _id) {
     auto temp = findNode(_id);
     //Borrar todos los edges que salen del NODO
     for (auto i : temp->nexts){
+        if(findNode(i->origin->Id) == nullptr or findNode(i->end->Id) == nullptr){
+            cout<<"already removed";
+        }
+        else {
+        cout<<"i->origin->id: "<<i->origin->Id<<", i->end->Id: "<<i->end->Id<<endl;
         removeConnection(i->origin->Id, i->end->Id);
+        }
     }
     //Borrar todos los edges que llegan al NODO y su rastro en la lista de adyacencia LA si el grafo es dirigido
     if(is_directed) {
@@ -248,6 +255,7 @@ void graph::removeNode(int _id) {
     }
 
     //Borrar el nodo
+    temp= nullptr;
     delete temp;
 }
 
@@ -492,7 +500,11 @@ void graph::printAristasByNode() {
 
 
 graph::~graph() {
-    for (int i=0;i<LA.size();++i) {
+    int i=0;
+    while(not LA[i][0]->nexts.empty()){
         removeNode(LA[i][0]->Id);
+        i++;
     }
+    LA[i][0]= nullptr;
+    delete LA[i][0];
 }

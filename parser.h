@@ -119,7 +119,7 @@ void createjsonnodes(){
             cout<<"El nodo: "<<tempnodeorigin<<", tiene coneccion con el nodo: "<<temp<<endl;
         }
     }
-    G.printLA();
+    //G.printLA();
     //cout << G.isConexo();
 
     //G.primMST();

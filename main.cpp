@@ -50,7 +50,7 @@ void trials(){
     cout << endl;
     G.printAristasByNode();
     cout << endl;
-    G.primMST(0);
+    //G.primMST(0);
     G.getKruskal();
 
 
