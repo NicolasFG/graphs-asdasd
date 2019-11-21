@@ -5,6 +5,7 @@
 #include <vector>
 #include "graph.h"
 #include <map>
+#include <climits>
 
 graph::graph(bool directed) {
     nodes = 0;
@@ -92,7 +93,7 @@ int graph::minDistance(int dist[], bool sptSet[])
 
     return min_index;
 }
-
+/*
 int graph::printSolution(int dist[])
 {
     printf("Vertex \t\t Distance from Source\n");
@@ -126,7 +127,7 @@ void graph::dijkstra(int OriginKey) {
         printSolution(dist);
     }
 }
-
+*/
 void graph::createConection(int origin, int end, double pond) {
     auto auxEdge = new Edge;
     auxEdge->origin = findNode(origin);
@@ -260,10 +261,10 @@ void graph::removeNode(int _id) {
     //Borrar todos los edges que salen del NODO
     for (auto i : temp->nexts){
         if(findNode(i->origin->Id) == nullptr or findNode(i->end->Id) == nullptr){
-            cout<<"already removed";
+            //cout<<"already removed";
         }
         else {
-        cout<<"i->origin->id: "<<i->origin->Id<<", i->end->Id: "<<i->end->Id<<endl;
+        //cout<<"i->origin->id: "<<i->origin->Id<<", i->end->Id: "<<i->end->Id<<endl;
         removeConnection(i->origin->Id, i->end->Id);
         }
     }
@@ -543,8 +544,41 @@ void graph::printAristasByNode() {
     }
 }
 
+void graph::printBF(int StartID) {
+    auto X = findNode(StartID);
+    auto x = BellmanFord(StartID);
+    cout << "BELLMAN-FORD : " << endl;
+    for (auto y : x){
+        cout << y.first->Name << " shortest path size to " << X->Name << " is " << y.second << endl;
+    }
+}
+
+map<Node*, int> graph::BellmanFord(int StartID) {
+    map<Node*, int> ans;
+    auto FirstNode = findNode(StartID);
+    for (auto& i : LA) {
+        ans.insert(pair<Node*,int>(i[0], INT_MAX));
+    }
+    ans.find(FirstNode)->second = 0;
+
+    bool changed = true;
+    for(unsigned long count = 0 ; count < LA.size()-1   ; ++count) {
+        for (auto &j : ans) {
+            for (auto k : j.first->nexts) {
+                if (k->pond + j.second < ans.find(k->end)->second) {
+                    ans.find(k->end)->second = k->pond + j.second;
+                    changed = true;
+                }
+            }
+            if (changed) changed = false;
+        }
+    }
+    return ans;
 
 
+}
+
+/*
 graph::~graph() {
     int i=0;
     while(not LA[i][0]->nexts.empty()){
@@ -554,3 +588,4 @@ graph::~graph() {
     LA[i][0]= nullptr;
     delete LA[i][0];
 }
+*/
