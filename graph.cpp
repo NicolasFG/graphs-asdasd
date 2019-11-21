@@ -595,6 +595,39 @@ void graph::printDFS(const vector<int>& Resultado){
     for (int i : Resultado) {
         cout<<i<<"  ";
     }
+    cout<<endl;
+}
+
+void graph::BFS(int key) {
+    vector<bool> visited(LA.size(),false);
+    vector<int> queue;
+    vector<int> resultbfs;
+
+    visited[findIndexNode(key)] = true;
+    queue.push_back(key);
+
+    while(!queue.empty()){
+        key = queue.front();
+        //cout<<"keys: "<<key<<endl;
+        resultbfs.push_back(key);
+        queue.erase(queue.begin());
+
+        for (auto & next : LA[findIndexNode(key)][0]->nexts){
+            int temp = next->end->Id;
+            if (!visited[findIndexNode(temp)]){
+                visited[findIndexNode(temp)] = true;
+                queue.push_back(temp);
+            }
+        }
+    }
+    printBFS(resultbfs);
+}
+
+void graph::printBFS(const vector<int>& Resultadobfs){
+    for (int i=0; i<Resultadobfs.size(); ++i) {
+        cout<<Resultadobfs[i]<<"  ";
+    }
+    cout<<endl;
 }
 
 void printMatrix(const vector<vector<long>>& a){
