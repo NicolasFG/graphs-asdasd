@@ -6,6 +6,7 @@
 #include <stack>
 #include "graph.h"
 #include <map>
+#include <climits>
 
 graph::graph(bool directed) {
     nodes = 0;
@@ -281,10 +282,10 @@ void graph::removeNode(int _id) {
     //Borrar todos los edges que salen del NODO
     for (auto i : temp->nexts){
         if(findNode(i->origin->Id) == nullptr or findNode(i->end->Id) == nullptr){
-            cout<<"already removed";
+            //cout<<"already removed";
         }
         else {
-        cout<<"i->origin->id: "<<i->origin->Id<<", i->end->Id: "<<i->end->Id<<endl;
+        //cout<<"i->origin->id: "<<i->origin->Id<<", i->end->Id: "<<i->end->Id<<endl;
         removeConnection(i->origin->Id, i->end->Id);
         }
     }
@@ -564,8 +565,7 @@ void graph::printAristasByNode() {
     }
 }
 
-void graph::DFS(int key)
-{
+void graph::DFS(int key){
     vector<bool> visited(LA.size(), false);
     stack<int> stack;
 
@@ -576,7 +576,6 @@ void graph::DFS(int key)
         //cout<<"key: "<<key<<endl;
         key = stack.top();
         stack.pop();
-
         if (!visited[findIndexNode(key)])
         {
             cout<<key<<"  ";
@@ -591,6 +590,87 @@ void graph::DFS(int key)
         }
 
     }
+}
+
+void printMatrix(const vector<vector<long>>& a){
+    for (const auto& x : a){
+        for (auto y : x){
+            cout << y << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+void graph::printFW(){
+    cout << "FLOYD - WARSHALL :" << endl;
+    printMatrix(FloydWarshall());
+}
+
+
+
+vector<vector<long>> graph::FloydWarshall() {
+    map<Node*, int> aux;
+    for (unsigned long i = 0; i < LA.size(); ++i) {
+        aux.insert(pair<Node*, int>(LA[i][0],i));
+    }
+    vector<vector<long>> ans;
+    for (auto x : LA){
+        vector<long> temp;
+        temp.reserve(LA.size());
+        for (auto y : LA) temp.push_back(INT_MAX);
+        ans.push_back(temp);
+    }
+    for (unsigned long z = 0 ; z < LA.size(); ++z){
+        ans[z][z] = 0;
+        for (auto n : LA[z][0]->nexts){
+            int indexA = aux.find(n->origin)->second;
+            int indexB = aux.find(n->end)->second;
+            ans[indexA][indexB] = n->pond;
+        }
+    }
+    for (unsigned long a = 0; a < LA.size(); ++a)
+        for (unsigned long b = 0; b < LA.size(); ++b)
+            for (unsigned long c = 0; c < LA.size(); ++c) {
+                if (ans[b][c] > ans[b][a] + ans[a][c]) ans[b][c] = ans[b][a] + ans[a][c];
+                printMatrix(ans);
+            }
+
+    return ans;
+}
+
+void graph::printBF(int StartID) {
+    auto X = findNode(StartID);
+    auto x = BellmanFord(StartID);
+    cout << "BELLMAN-FORD : " << endl;
+    for (auto y : x){
+        cout << y.first->Name << " shortest path size to " << X->Name << " is " << y.second << endl;
+    }
+}
+
+map<Node*, int> graph::BellmanFord(int StartID) {
+    map<Node*, int> ans;
+    auto FirstNode = findNode(StartID);
+    for (auto& i : LA) {
+        ans.insert(pair<Node*,int>(i[0], INT_MAX));
+    }
+    ans.find(FirstNode)->second = 0;
+
+    bool changed = true;
+    for(unsigned long count = 0 ; count < LA.size()-1   ; ++count) {
+        for (auto &j : ans) {
+            for (auto k : j.first->nexts) {
+                if (k->pond + j.second < ans.find(k->end)->second) {
+                    ans.find(k->end)->second = k->pond + j.second;
+                    changed = true;
+                }
+            }
+            if (changed) changed = false;
+        }
+
+    }
+    return ans;
+
 }
 
 /*

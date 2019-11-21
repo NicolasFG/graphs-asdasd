@@ -81,9 +81,10 @@ public:
     void DFS(int key);
     vector<Node*> Dijkstra();
     void Aasterix();
-    void FloydWarshall();
+    vector<vector<long>> FloydWarshall();
     map<Node*, int> BellmanFord(int);
 
+    void printFW();
     void printBF(int);
 
     //~graph();
