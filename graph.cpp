@@ -81,6 +81,52 @@ void graph::createConection(int origin, int end) {
     edges++;
 }
 
+int graph::minDistance(int dist[], bool sptSet[])
+{
+    int min = INT_MAX;
+    int min_index = 0;
+
+    for (unsigned long v = 0; v < LA.size(); v++)
+        if (!sptSet[v] && dist[v] <= min)
+            min = dist[v], min_index = v;
+
+    return min_index;
+}
+
+int graph::printSolution(int dist[])
+{
+    printf("Vertex \t\t Distance from Source\n");
+    for (unsigned long i = 0; i < LA.size(); i++)
+        printf("%d \t\t %d\n", i, dist[i]);
+}
+
+void graph::dijkstra(int OriginKey) {
+        int dist[V];
+
+        bool sptSet[V];
+
+        for (int i = 0; i < V; i++)
+            dist[i] = INT_MAX, sptSet[i] = false;
+
+        dist[src] = 0;
+
+        for (int count = 0; count < V - 1; count++) {
+
+            int u = minDistance(dist, sptSet);
+
+            sptSet[u] = true;
+
+            for (int v = 0; v < V; v++)
+
+                if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
+                    && dist[u] + graph[u][v] < dist[v])
+                    dist[v] = dist[u] + graph[u][v];
+        }
+
+        printSolution(dist);
+    }
+}
+
 void graph::createConection(int origin, int end, double pond) {
     auto auxEdge = new Edge;
     auxEdge->origin = findNode(origin);
