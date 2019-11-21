@@ -80,10 +80,11 @@ public:
     vector<Node*> Dijkstra();
     void Aasterix();
     void FloydWarshall();
-    void BellmanFord();
+    map<Node*, int> BellmanFord(int);
 
+    void printBF(int);
 
-    ~graph();
+    //~graph();
 
 
 };

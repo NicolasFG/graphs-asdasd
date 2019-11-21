@@ -81,50 +81,50 @@ void graph::createConection(int origin, int end) {
     edges++;
 }
 
-int graph::minDistance(vector<int> dist, vector<bool> sptSet)
+int graph::minDistance(int dist[], bool sptSet[])
 {
     int min = INT_MAX;
     int min_index = 0;
 
-    for (unsigned long v = 0; v < LA.size(); ++v)
+    for (unsigned long v = 0; v < LA.size(); v++)
         if (!sptSet[v] && dist[v] <= min)
             min = dist[v], min_index = v;
 
     return min_index;
 }
 
-int graph::printSolution(vector<int> dist)
+int graph::printSolution(int dist[])
 {
-    cout<<("Vertex \t\t Distance from Source\n");
-    for (unsigned long i = 0; i < LA.size(); ++i)
-        cout<<findNodeById(i)->Id<<"\t\t"<<dist[i]<<endl;
+    printf("Vertex \t\t Distance from Source\n");
+    for (unsigned long i = 0; i < LA.size(); i++)
+        printf("%d \t\t %d\n", i, dist[i]);
 }
 
 void graph::dijkstra(int OriginKey) {
-        vector<int> dist;
-        vector<bool> sptSet;
+        int dist[V];
 
-        for (unsigned long i = 0; i < LA.size(); ++i) {
-            dist.push_back(INT_MAX);
-            sptSet.push_back(false);
-        }
+        bool sptSet[V];
 
-        dist[findIndexNode(OriginKey)] = 0;
+        for (int i = 0; i < V; i++)
+            dist[i] = INT_MAX, sptSet[i] = false;
 
-        for (unsigned long count = 0; count < LA.size() - 1; ++count) {
+        dist[src] = 0;
+
+        for (int count = 0; count < V - 1; count++) {
 
             int u = minDistance(dist, sptSet);
 
             sptSet[u] = true;
 
-            for (unsigned long v = 0; v < LA.size(); v++) {
-                if (!sptSet[v] && findArista(u,v) && dist[u] != INT_MAX && dist[u] + findArista(u,v)->pond < dist[v]){
-                    dist[v] = dist[u] + findArista(u,v)->pond;
-                }
-            }
+            for (int v = 0; v < V; v++)
+
+                if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
+                    && dist[u] + graph[u][v] < dist[v])
+                    dist[v] = dist[u] + graph[u][v];
         }
 
         printSolution(dist);
+    }
 }
 
 void graph::createConection(int origin, int end, double pond) {
@@ -172,23 +172,6 @@ Node* graph::findNode(int key) {
         }
     }
     return nullptr;
-}
-
-Node* graph::findNodeById(int id) {
-    for (int i=0; i<LA.size(); ++i) {
-        if (i == id){
-            return LA[i][0];
-        }
-    }
-    return nullptr;
-}
-
-int graph::findIndexNode(int key) {
-    for (unsigned long i=0; i<LA.size(); ++i) {
-        if (LA[i][0]->Id == key){
-            return i;
-        }
-    }
 }
 
 Edge* graph::findArista(int key1, int key2) {
@@ -280,7 +263,7 @@ void graph::removeNode(int _id) {
             cout<<"already removed";
         }
         else {
-        //cout<<"i->origin->id: "<<i->origin->Id<<", i->end->Id: "<<i->end->Id<<endl;
+        cout<<"i->origin->id: "<<i->origin->Id<<", i->end->Id: "<<i->end->Id<<endl;
         removeConnection(i->origin->Id, i->end->Id);
         }
     }
@@ -560,6 +543,8 @@ void graph::printAristasByNode() {
     }
 }
 
+
+
 graph::~graph() {
     int i=0;
     while(not LA[i][0]->nexts.empty()){
@@ -569,4 +554,3 @@ graph::~graph() {
     LA[i][0]= nullptr;
     delete LA[i][0];
 }
-
