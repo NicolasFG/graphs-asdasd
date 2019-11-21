@@ -68,10 +68,8 @@ public:
     static void printMST( const vector<Edge*>& parent);
     void primMST(int key);//TERMINADO
     void dijkstra(int OriginKey);
-    int minDistance(vector<int> dist, vector<bool> sptSet);
-    int printSolution(vector<int> dist);
-    int findIndexNode(int key);
-    Node* findNodeById(int id);
+    int minDistance(int dist[], bool sptSet[]);
+    int printSolution(int dist[]);
 
     static void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador);
 
