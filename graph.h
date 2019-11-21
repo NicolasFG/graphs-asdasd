@@ -73,6 +73,14 @@ public:
 
     static void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador);
 
+    void BreadthFirstSearch();
+    void DepthFirstSearch();
+    vector<Node*> Dijkstra();
+    void Aasterix();
+    void FloydWarshall();
+    void BellmanFord();
+
+
     ~graph();
 
 
