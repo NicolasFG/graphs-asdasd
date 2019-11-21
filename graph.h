@@ -75,8 +75,10 @@ public:
 
     static void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador);
 
+    void DFSUtil(int v, vector<bool>& visited);
+
     void BreadthFirstSearch();
-    void DepthFirstSearch();
+    void DFS(int key);
     vector<Node*> Dijkstra();
     void Aasterix();
     void FloydWarshall();

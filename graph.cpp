@@ -3,6 +3,7 @@
 #include <cmath>
 #include <algorithm>
 #include <vector>
+#include <stack>
 #include "graph.h"
 #include <map>
 
@@ -563,6 +564,34 @@ void graph::printAristasByNode() {
     }
 }
 
+void graph::DFS(int key)
+{
+    vector<bool> visited(LA.size(), false);
+    stack<int> stack;
+
+    stack.push(key);
+    //cout<<"key1: "<<key<<endl;
+    while (!stack.empty())
+    {
+        //cout<<"key: "<<key<<endl;
+        key = stack.top();
+        stack.pop();
+
+        if (!visited[findIndexNode(key)])
+        {
+            cout<<key<<"  ";
+            visited[findIndexNode(key)] = true;
+        }
+
+        for (auto & next : LA[findIndexNode(key)][0]->nexts){
+            int temp = next->end->Id;
+            if (!visited[findIndexNode(temp)]){
+                stack.push(temp);
+            }
+        }
+
+    }
+}
 
 /*
 graph::~graph() {
