@@ -7,46 +7,34 @@ using namespace std;
 void trials(){
     graph G(false);
 
-    //G.createNodes(0, "A", 120.0, 20);
-    G.createNodes(1, "B", 50.0, 30);
-    G.createNodes(2, "C", 140.0, 110);
-    G.createNodes(3, "D", 60.0, 130);
-    G.createNodes(4, "E", 60.0, 130);
-    G.createNodes(5, "F", 60.0, 130);
-    G.createNodes(6, "G", 60.0, 130);
-    G.createNodes(7, "H", 60.0, 130);
-    G.createNodes(8, "I", 60.0, 130);
-    G.createNodes(9, "J", 60.0, 130);
+    G.createNodes(100, "A", 120.0, 20);
+    G.createNodes(200, "B", 50.0, 30);
+    G.createNodes(300, "C", 140.0, 110);
+    G.createNodes(400, "D", 60.0, 130);
+    G.createNodes(500, "E", 60.0, 130);
+    G.createNodes(600, "F", 60.0, 130);
+    G.createNodes(700, "G", 60.0, 130);
+    G.createNodes(800, "H", 60.0, 130);
+    G.createNodes(900, "I", 60.0, 130);
+    G.createNodes(1000, "J", 60.0, 130);
 
-    //G.createConection(0,1, 1);
-    //G.createConection(0,2, 2);
-    //G.createConection(0,1, 1);
-    //G.createConection(0,7, 5);
-    //G.createConection(0,8, 11);
-    //G.createConection(0,2, 2);
-    //G.createConection(0,3, 3);
-    G.createConection(1,2, 1);
-    //G.createConection(1,6, 2);
-    G.createConection(2,3, 1);
-    G.createConection(1,5, 4);
-    G.createConection(1,4, 3);
-    //G.createConection(3,3, 0);
-    G.createConection(4,7, 3);
-    G.createConection(7,8, 1);
-    G.createConection(8,9, 1);
-    G.createConection(2,6, 4);
-    G.createConection(5,7, 2);
-    //G.createConection(5,8, 7);
-    //G.createConection(6,8, 39);
-    //G.createConection(7,9, 15);
+    G.createConection(100,200, 100);
+    G.createConection(200,300, 100);
+    G.createConection(100,500, 400);
+    G.createConection(100,400, 300);
+    G.createConection(400,700, 300);
+    G.createConection(700,800, 100);
+    G.createConection(800,900, 100);
+    G.createConection(200,600, 400);
+    G.createConection(500,700, 200);
 
-    G.dijkstra(0);
+    G.printSolution(G.dijkstra(200));
 
     cout<<"Following is Depth First Traversal: "<<endl;
-    G.DFS(2);
+    G.DFS(100);
 
     cout<<"Following is Breadth First Traversal: "<<endl;
-    G.BFS(1);
+    G.BFS(100);
 
     //if (G.isConexo()) cout << "Es conexo" << endl<< endl;
     //else cout << "No es conexo" << endl<< endl;

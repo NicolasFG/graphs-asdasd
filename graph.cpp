@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include <stack>
+#include <queue>
 #include "graph.h"
 #include <map>
 #include <climits>
@@ -100,53 +101,43 @@ void graph::createConection(int origin, int end) {
     edges++;
 }
 
-int graph::minDistance(vector<int> dist, vector<bool> sptSet)
+vector<int> graph::dijkstra(int OriginKey)
 {
-    int min = INT_MAX;
-    int min_index = 0;
+    vector<int> dist(LA.size(), INT_MAX);
+    priority_queue<pair<int, int>, vector< pair<int, int> >, greater< > > Q;
 
-    for (unsigned long v = 0; v < LA.size(); ++v) {
-        if (!sptSet[v] && dist[v] <= min) {
-            min = dist[v], min_index = v;
-        }
-    }
-
-    return min_index;
-}
-
-int graph::printSolution(vector<int> dist)
-{
-    cout<<("Vertex \t\t Distance from Source\n");
-    for (unsigned long i = 0; i < LA.size(); ++i) {
-        cout<<findNodeById(i)->Id<<"\t\t"<<dist[i]<<endl;
-    }
-}
-
-void graph::dijkstra(int OriginKey) {
-    vector<int> dist;
-    vector<bool> sptSet;
-
-    for (unsigned long i = 0; i < LA.size(); ++i) {
-        dist.push_back(INT_MAX);
-        sptSet.push_back(false);
-    }
-
+    Q.push(make_pair(findIndexNode(OriginKey), 0));
     dist[findIndexNode(OriginKey)] = 0;
 
-        for (unsigned long count = 0; count < LA.size() - 1; ++count) {
+    while(!Q.empty())
+    {
+        int u = Q.top().first;
+        cout<<"U: "<<u<<endl;
+        Q.pop();
 
-            int u = minDistance(dist, sptSet);
+        for(unsigned long i = 0; i < LA[u].size(); i++)
+        {
+            int v = LA[u][i]->Id;
+            cout<<"v: "<<v<<endl;
+            int weight = findArista(findNodeById(i)->Id,v)->pond;
+            cout<<"weight: "<<findArista(findNodeById(i)->Id,v)->pond;
 
-            sptSet[u] = true;
-
-            for (unsigned long v = 0; v < LA.size(); v++) {
-                if (!sptSet[v] && findArista(u,v) && dist[u] != INT_MAX && dist[u] + findArista(u,v)->pond < dist[v]){
-                    dist[v] = dist[u] + findArista(u,v)->pond;
-                }
+            if(dist[findIndexNode(v)] > dist[u] + weight)
+            {
+                cout<<"dist[u]: "<<dist[u]<<", weight: "<<weight<<endl;
+                dist[findIndexNode(v)] = dist[u] + weight;
+                Q.push(make_pair(findIndexNode(v), dist[findIndexNode(v)]));
             }
         }
+    }
+    return dist;
+}
 
-        printSolution(dist);
+int graph::printSolution(vector<int> dist){
+    cout<<("Vertex \t\t Distance from Source\n");
+    for (unsigned long i = 0; i < LA.size(); ++i) {
+        cout << findNodeById(i)->Id << "\t\t\t\t" << dist[i] << endl;
+    }
 }
 
 void graph::createConection(int origin, int end, double pond) {
