@@ -66,20 +66,16 @@ public:
     void printAristasByNode();
     int minKey(vector<int> key, vector<bool> mstSet);
     static void printMST( const vector<Edge*>& parent);
-    void primMST(int key);//TERMINADO
+    void primMST(int key);
     int minDistance(vector<int> dist, vector<bool> sptSet);
     int printSolution(vector<int> dist);
     void dijkstra(int OriginKey);
     int findIndexNode(int key);
     Node* findNodeById(int id);
-
     static void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador);
-
-    void DFSUtil(int v, vector<bool>& visited);
-
-    void BreadthFirstSearch();
     void DFS(int key);
-    vector<Node*> Dijkstra();
+    static void printDFS(const vector<int>& Resultado);
+    void BFS(int key);
     void Aasterix();
     vector<vector<long>> FloydWarshall();
     map<Node*, int> BellmanFord(int);

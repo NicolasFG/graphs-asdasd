@@ -568,17 +568,16 @@ void graph::printAristasByNode() {
 void graph::DFS(int key){
     vector<bool> visited(LA.size(), false);
     stack<int> stack;
-
+    vector<int> result;
     stack.push(key);
-    //cout<<"key1: "<<key<<endl;
+
     while (!stack.empty())
     {
-        //cout<<"key: "<<key<<endl;
         key = stack.top();
         stack.pop();
         if (!visited[findIndexNode(key)])
         {
-            cout<<key<<"  ";
+            result.push_back(key);
             visited[findIndexNode(key)] = true;
         }
 
@@ -588,7 +587,13 @@ void graph::DFS(int key){
                 stack.push(temp);
             }
         }
+    }
+    printDFS(result);
+}
 
+void graph::printDFS(const vector<int>& Resultado){
+    for (int i : Resultado) {
+        cout<<i<<"  ";
     }
 }
 
