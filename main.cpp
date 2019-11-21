@@ -39,19 +39,21 @@ void trials(){
     G.createConection(6,8, 39);
     G.createConection(7,9, 15);
 
-    if (G.isConexo()) cout << "Es conexo" << endl<< endl;
-    else cout << "No es conexo" << endl<< endl;
+    G.dijkstra(0);
+
+    //if (G.isConexo()) cout << "Es conexo" << endl<< endl;
+    //else cout << "No es conexo" << endl<< endl;
 
 
-    if (G.is_bipartite()) cout << "Es bipartito" << endl<< endl;
-    else cout << "No es bipartito" << endl<< endl;
+    //if (G.is_bipartite()) cout << "Es bipartito" << endl<< endl;
+    //else cout << "No es bipartito" << endl<< endl;
     //G.printLA();
 
-    cout << endl;
-    G.printAristasByNode();
-    cout << endl;
+    //cout << endl;
+    //G.printAristasByNode();
+    //cout << endl;
     //G.primMST(0);
-    G.getKruskal();
+    //G.getKruskal();
 
 
 
@@ -60,8 +62,8 @@ void trials(){
 
 int main(){
     //fillin();
-    createjsonnodes();
-    //trials();
+    //createjsonnodes();
+    trials();
 
     return 0;
 }
