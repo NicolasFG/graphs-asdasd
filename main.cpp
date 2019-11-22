@@ -33,11 +33,7 @@ void trials(){
     G.createConection(800,1000, 200);
 
     G.printSolution(G.dijkstra(200));
-
-    cout<<"Following is Depth First Traversal: "<<endl;
     G.DFS(100);
-
-    cout<<"Following is Breadth First Traversal: "<<endl;
     G.BFS(100);
 
 }

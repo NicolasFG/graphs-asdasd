@@ -108,27 +108,19 @@ vector<double> graph::dijkstra(int OriginKey)
     priority_queue<pair<int, int>, vector< pair<int, int> >, greater< > > Q;
 
     Q.push(make_pair(OriginKey, 0));
-    //cout<<"Q.first: "<<Q.top().first<<endl;
-    //cout<<"Q.second: "<<Q.top().second<<endl;
     dist[findIndexNode(OriginKey)] = 0;
-    //cout<<"First one: "<<dist[1]<<endl;
 
     while(!Q.empty())
     {
         int u = Q.top().first;
-        //cout<<"U: "<<u<<endl;
         Q.pop();
-        //cout<<"Size: "<<LA[findIndexNode(u)].size()-1<<endl;
         for(unsigned long i = 0; i < LA[findIndexNode(u)].size()-1; i++)
         {
             int v = LA[findIndexNode(u)][i+1]->Id;
-            //cout<<"v: "<<v<<endl;
             double weight = findArista(u,v)->pond;
-            //cout<<"weight: "<<findArista(u,v)->pond<<endl;
 
             if(dist[findIndexNode(v)] > dist[findIndexNode(u)] + weight)
             {
-                //cout<<"dist[findIndexNode(v)]: "<<dist[findIndexNode(v)]<<", dist[findIndexNode(u)]: "<<dist[findIndexNode(u)]<<", weight: "<<weight<<endl;
                 dist[findIndexNode(v)] = dist[findIndexNode(u)] + weight;
                 Q.push(make_pair(v, dist[findIndexNode(v)]));
             }
@@ -587,6 +579,7 @@ void graph::DFS(int key){
 }
 
 void graph::printDFS(const vector<int>& Resultado){
+    cout<<"Following is Depth First Traversal: "<<endl;
     for (int i : Resultado) {
         cout<<i<<"  ";
     }
@@ -619,6 +612,7 @@ void graph::BFS(int key) {
 }
 
 void graph::printBFS(const vector<int>& Resultadobfs){
+    cout<<"Following is Breadth First Traversal: "<<endl;
     for (int i=0; i<Resultadobfs.size(); ++i) {
         cout<<Resultadobfs[i]<<"  ";
     }
