@@ -67,9 +67,8 @@ public:
     int minKey(vector<int> key, vector<bool> mstSet);
     static void printMST( const vector<Edge*>& parent);
     void primMST(int key);
-    int minDistance(vector<int> dist, vector<bool> sptSet);
-    int printSolution(vector<int> dist);
-    vector<int> dijkstra(int OriginKey);
+    void printSolution(vector<double> dist);
+    vector<double> dijkstra(int OriginKey);
     int findIndexNode(int key);
     Node* findNodeById(int id);
     static void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador);

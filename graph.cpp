@@ -74,6 +74,7 @@ int graph::findIndexNode(int key) {
             return i;
         }
     }
+    return INT_MAX;
 }
 
 void graph::createConection(int origin, int end) {
@@ -101,41 +102,44 @@ void graph::createConection(int origin, int end) {
     edges++;
 }
 
-vector<int> graph::dijkstra(int OriginKey)
+vector<double> graph::dijkstra(int OriginKey)
 {
-    vector<int> dist(LA.size(), INT_MAX);
+    vector<double> dist(LA.size(), INT_MAX);
     priority_queue<pair<int, int>, vector< pair<int, int> >, greater< > > Q;
 
-    Q.push(make_pair(findIndexNode(OriginKey), 0));
+    Q.push(make_pair(OriginKey, 0));
+    //cout<<"Q.first: "<<Q.top().first<<endl;
+    //cout<<"Q.second: "<<Q.top().second<<endl;
     dist[findIndexNode(OriginKey)] = 0;
+    //cout<<"First one: "<<dist[1]<<endl;
 
     while(!Q.empty())
     {
         int u = Q.top().first;
-        cout<<"U: "<<u<<endl;
+        //cout<<"U: "<<u<<endl;
         Q.pop();
-
-        for(unsigned long i = 0; i < LA[u].size(); i++)
+        //cout<<"Size: "<<LA[findIndexNode(u)].size()-1<<endl;
+        for(unsigned long i = 0; i < LA[findIndexNode(u)].size()-1; i++)
         {
-            int v = LA[u][i]->Id;
-            cout<<"v: "<<v<<endl;
-            int weight = findArista(findNodeById(i)->Id,v)->pond;
-            cout<<"weight: "<<findArista(findNodeById(i)->Id,v)->pond;
+            int v = LA[findIndexNode(u)][i+1]->Id;
+            //cout<<"v: "<<v<<endl;
+            double weight = findArista(u,v)->pond;
+            //cout<<"weight: "<<findArista(u,v)->pond<<endl;
 
-            if(dist[findIndexNode(v)] > dist[u] + weight)
+            if(dist[findIndexNode(v)] > dist[findIndexNode(u)] + weight)
             {
-                cout<<"dist[u]: "<<dist[u]<<", weight: "<<weight<<endl;
-                dist[findIndexNode(v)] = dist[u] + weight;
-                Q.push(make_pair(findIndexNode(v), dist[findIndexNode(v)]));
+                //cout<<"dist[findIndexNode(v)]: "<<dist[findIndexNode(v)]<<", dist[findIndexNode(u)]: "<<dist[findIndexNode(u)]<<", weight: "<<weight<<endl;
+                dist[findIndexNode(v)] = dist[findIndexNode(u)] + weight;
+                Q.push(make_pair(v, dist[findIndexNode(v)]));
             }
         }
     }
     return dist;
 }
 
-int graph::printSolution(vector<int> dist){
-    cout<<("Vertex \t\t Distance from Source\n");
-    for (unsigned long i = 0; i < LA.size(); ++i) {
+void graph::printSolution(vector<double> dist) {
+    cout << ("Vertex \t\t Distance from Source\n");
+    for (int i = 0; i < LA.size(); ++i) {
         cout << findNodeById(i)->Id << "\t\t\t\t" << dist[i] << endl;
     }
 }

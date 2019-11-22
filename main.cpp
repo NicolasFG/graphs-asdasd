@@ -5,7 +5,7 @@
 using namespace std;
 
 void trials(){
-    graph G(false);
+    graph G(true);
 
     G.createNodes(100, "A", 120.0, 20);
     G.createNodes(200, "B", 50.0, 30);
@@ -19,7 +19,10 @@ void trials(){
     G.createNodes(1000, "J", 60.0, 130);
 
     G.createConection(100,200, 100);
+    G.createConection(300,100, 200);
     G.createConection(200,300, 100);
+    G.createConection(400,100, 300);
+    G.createConection(300,500, 200);
     G.createConection(100,500, 400);
     G.createConection(100,400, 300);
     G.createConection(400,700, 300);
@@ -27,6 +30,7 @@ void trials(){
     G.createConection(800,900, 100);
     G.createConection(200,600, 400);
     G.createConection(500,700, 200);
+    G.createConection(800,1000, 200);
 
     G.printSolution(G.dijkstra(200));
 
@@ -36,24 +40,7 @@ void trials(){
     cout<<"Following is Breadth First Traversal: "<<endl;
     G.BFS(100);
 
-    //if (G.isConexo()) cout << "Es conexo" << endl<< endl;
-    //else cout << "No es conexo" << endl<< endl;
-
-
-    //if (G.is_bipartite()) cout << "Es bipartito" << endl<< endl;
-    //else cout << "No es bipartito" << endl<< endl;
-    //G.printLA();
-
-    //cout << endl;
-    //G.printAristasByNode();
-    //cout << endl;
-    //G.primMST(0);
-    //G.getKruskal();
-
-
-
 }
-
 
 int main(){
     //fillin();
