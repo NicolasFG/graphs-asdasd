@@ -72,9 +72,9 @@ public:
     int findIndexNode(int key);
     Node* findNodeById(int id);
     static void aux_bipartite(Node* N, bool prevColor, map<Node*,bool> &checked, int &contador);
-    void DFS(int key);
+    vector<int> DFS(int key);
     static void printDFS(const vector<int>& Resultado);
-    void BFS(int key);
+    vector<int> BFS(int key);
     static void printBFS(const vector<int>& Resultado);
     void Aasterix();
     vector<vector<long>> FloydWarshall();

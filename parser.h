@@ -120,6 +120,8 @@ void createjsonnodes(){
         }
     }
     G.printSolution(G.dijkstra(4020));
+    G.printBFS(G.BFS(4020));
+    G.printDFS(G.DFS(4020));
 }
 
 #endif //GRAPHS_ASDASD_PARSER_H

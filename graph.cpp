@@ -552,10 +552,10 @@ void graph::printAristasByNode() {
     }
 }
 
-void graph::DFS(int key){
+vector<int> graph::DFS(int key){
     vector<bool> visited(LA.size(), false);
     stack<int> stack;
-    vector<int> result;
+    vector<int> resultdfs;
     stack.push(key);
 
     while (!stack.empty())
@@ -564,7 +564,7 @@ void graph::DFS(int key){
         stack.pop();
         if (!visited[findIndexNode(key)])
         {
-            result.push_back(key);
+            resultdfs.push_back(key);
             visited[findIndexNode(key)] = true;
         }
 
@@ -575,7 +575,7 @@ void graph::DFS(int key){
             }
         }
     }
-    printDFS(result);
+    return resultdfs;
 }
 
 void graph::printDFS(const vector<int>& Resultado){
@@ -586,7 +586,7 @@ void graph::printDFS(const vector<int>& Resultado){
     cout<<endl;
 }
 
-void graph::BFS(int key) {
+vector<int> graph::BFS(int key) {
     vector<bool> visited(LA.size(),false);
     vector<int> queue;
     vector<int> resultbfs;
@@ -608,7 +608,7 @@ void graph::BFS(int key) {
             }
         }
     }
-    printBFS(resultbfs);
+    return resultbfs;
 }
 
 void graph::printBFS(const vector<int>& Resultadobfs){

@@ -33,15 +33,15 @@ void trials(){
     G.createConection(800,1000, 200);
 
     G.printSolution(G.dijkstra(200));
-    G.DFS(100);
-    G.BFS(100);
+    G.printBFS(G.BFS(200));
+    G.printDFS(G.DFS(200));
 
 }
 
 int main(){
     //fillin();
-    //createjsonnodes();
-    trials();
+    createjsonnodes();
+    //trials();
 
     return 0;
 }

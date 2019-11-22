@@ -6,28 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.cpp
-string
--
-iostream
--
-cmath
--
-algorithm
--
-vector
--
-stack
--
-queue
--
-graph.h
-/Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
-map
--
-climits
--
-
 /Users/jonathanprieto/Documents/GitHub/graphs-asdasd/graph.h
 vector
 -
