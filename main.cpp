@@ -35,13 +35,13 @@ void trials(){
     G.printSolution(G.dijkstra(200));
     G.printBFS(G.BFS(200));
     G.printDFS(G.DFS(200));
-G.Aasterix(300,700);
+    G.Aasterix(300,700);
 }
 
 int main(){
     //fillin();
-    createjsonnodes();
-    //trials();
+    //createjsonnodes();
+    trials();
 
     return 0;
 }

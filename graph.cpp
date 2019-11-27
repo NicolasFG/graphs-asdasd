@@ -751,14 +751,15 @@ double graph::Aasterix(int start,int end) {
         for (int j = 0; j <= go->nexts.size()-1; ++j) {
             if(go->nexts[j]->end->Id==end){
                 peso+=go->nexts[j]->pond;
-                cout<<start<<" "<<end<<" "<<peso<<endl;
+                cout<<"A*: "<<endl;
+                cout<<"Start: "<<start<<" - End: "<<" "<<end<<" - Peso: "<<" "<<peso<<endl;
                 return peso;
             }
         }
 
     }
 
-
+return 0;
 }
 
 /*
