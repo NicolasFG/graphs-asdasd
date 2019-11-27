@@ -76,7 +76,8 @@ public:
     static void printDFS(const vector<int>& Resultado);
     vector<int> BFS(int key);
     static void printBFS(const vector<int>& Resultado);
-    void Aasterix();
+    v double Aasterix(int start,int end);
+    double distancetoendnode(int nodo,int end);
     vector<vector<long>> FloydWarshall();
     map<Node*, int> BellmanFord(int);
     void printFW();
