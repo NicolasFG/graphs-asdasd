@@ -122,6 +122,9 @@ void createjsonnodes(){
     G.printSolution(G.dijkstra(4020));
     G.printBFS(G.BFS(4020));
     G.printDFS(G.DFS(4020));
+    G.printa(3731,507,G.Aasterix(3731,507));
+    G.printBF(4020);
+    G.printFW();
 }
 
 #endif //GRAPHS_ASDASD_PARSER_H

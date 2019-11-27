@@ -705,10 +705,9 @@ map<Node*, int> graph::BellmanFord(int StartID) {
 double graph::distancetoendnode(int nodo, int end) {
 
     auto final= findIndexNode(end);
-    auto camino = dijkstra(nodo);
-    if(camino[final]>0)
-        return camino[final];
-    else return 0;
+    auto camino = calculatedistance(nodo,end);
+   return camino;
+
 
 
 
@@ -751,15 +750,17 @@ double graph::Aasterix(int start,int end) {
         for (int j = 0; j <= go->nexts.size()-1; ++j) {
             if(go->nexts[j]->end->Id==end){
                 peso+=go->nexts[j]->pond;
-                cout<<"A*: "<<endl;
-                cout<<"Start: "<<start<<" - End: "<<" "<<end<<" - Peso: "<<" "<<peso<<endl;
                 return peso;
             }
         }
 
     }
-
 return 0;
+}
+
+void graph::printa(int begin,int end, double peso){
+    cout<<"A*: "<<endl;
+    cout<<"Start: "<<begin<<" - End: "<<" "<<end<<" - Peso: "<<" "<<peso<<endl;
 }
 
 /*

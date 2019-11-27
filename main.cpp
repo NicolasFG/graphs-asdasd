@@ -35,7 +35,10 @@ void trials(){
     G.printSolution(G.dijkstra(200));
     G.printBFS(G.BFS(200));
     G.printDFS(G.DFS(200));
-    G.Aasterix(300,700);
+    G.printa(300,700,G.Aasterix(300,700));
+    G.printBF(200);
+    G.printFW();
+
 }
 
 int main(){

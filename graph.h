@@ -82,6 +82,7 @@ public:
     map<Node*, int> BellmanFord(int);
     void printFW();
     void printBF(int);
+    void printa(int begin,int end, double peso);
 
     //~graph();
 
