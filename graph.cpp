@@ -700,6 +700,67 @@ map<Node*, int> graph::BellmanFord(int StartID) {
 
 }
 
+
+
+double graph::distancetoendnode(int nodo, int end) {
+
+    auto final= findIndexNode(end);
+    auto camino = dijkstra(nodo);
+    if(camino[final]>0)
+        return camino[final];
+    else return 0;
+
+
+
+}
+double graph::Aasterix(int start,int end) {
+    auto go = findNode(start);
+    vector<double> pesos;
+
+    double peso=0;
+
+    if (distancetoendnode(start, end) == 0) {
+        return 0;
+    }
+    for (int k= 0; k <= nodes; ++k) {
+
+
+        if (distancetoendnode(go->nexts[0]->end->Id, end) != 0 and go->nexts[0]->end->Id!=end) {
+            for (int i = 0; i <= go->nexts.size() - 1; ++i) {
+                if (distancetoendnode(go->nexts[i]->end->Id, end) != 0) {
+                    pesos.push_back(go->nexts[i]->pond + distancetoendnode(go->nexts[i]->end->Id, end));
+                }
+
+            }
+            if (!pesos.empty()) {
+                sort(pesos.begin(), pesos.end());
+            }
+            double min = pesos[0];
+            for (int i = 0; i <= go->nexts.size() - 1; ++i) {
+                if (min == go->nexts[i]->pond + distancetoendnode(go->nexts[i]->end->Id, end)) {
+
+                    peso += go->nexts[i]->pond;
+                    go = go->nexts[i]->end;
+                    pesos.clear();
+                    pesos.push_back(10000);
+
+                }
+            }
+
+        }
+        for (int j = 0; j <= go->nexts.size()-1; ++j) {
+            if(go->nexts[j]->end->Id==end){
+                peso+=go->nexts[j]->pond;
+                cout<<start<<" "<<end<<" "<<peso<<endl;
+                return peso;
+            }
+        }
+
+    }
+
+
+}
+
 /*
 graph::~graph() {
     int i=0;
